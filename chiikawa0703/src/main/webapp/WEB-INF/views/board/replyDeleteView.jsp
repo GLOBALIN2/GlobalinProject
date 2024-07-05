@@ -41,6 +41,10 @@
 			</div>
 			<hr />
 			
+			<div><br><br>
+			<h1 class="display-5 fw-bold">댓글 삭제</h1>
+			</div><br><br>
+			
 			<section id="container">
 				<form name="updateForm" role="form" method="post" action="/board/replyDelete">
 					<input type="hidden" name="bno" value="${replyDelete.bno}" readonly="readonly"/>
@@ -49,11 +53,13 @@
 					<input type="hidden" id="perPageNum" name="perPageNum" value="${scri.perPageNum}"> 
 					<input type="hidden" id="searchType" name="searchType" value="${scri.searchType}"> 
 					<input type="hidden" id="keyword" name="keyword" value="${scri.keyword}"> 
-						
-					<div>
-						<p>삭제 하시겠습니까?</p>
-						<button type="submit" class="btn btn-outline-success btn-sm delete_btn">예 삭제합니다.</button>
-						<button type="button" class="btn btn-outline-success btn-sm cancel_btn">아니오. 삭제하지 않습니다.</button>
+					
+					<div id="replydeletelocation">	
+					<div id="buttonlocation">
+						<p class="fs-4">댓글을 삭제하시겠습니까?</p>
+						<button type="submit" style="background-color: #B2AADA;" class="btn btn-outline-light btn-sm delete_btn">예 삭제합니다.</button>
+						<button type="button" style="background-color: #B2AADA;" class="btn btn-outline-light btn-sm cancel_btn">아니오. 삭제하지 않습니다.</button>
+					</div>
 					</div>
 				</form>
 			</section>

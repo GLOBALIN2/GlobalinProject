@@ -58,7 +58,10 @@
 						<tbody>
 							<tr>
 								<td>
-									<label for="title">제목</label><input class="form-control" type="text" id="title" name="title" class="chk" placeholder="제목을 입력하세요." />
+									<label for="title">제목</label>
+									
+									<input class="form-control" type="text" id="title" name="title" class="chk" placeholder="제목을 입력하세요." />
+									
 								</td>
 							</tr>	
 							<tr>
@@ -76,7 +79,7 @@
 								-->
 							<tr>
 								<td>						
-									<button class="btn btn-outline-success btn-sm" type="submit">작성</button>
+									<button style="background-color: #B2AADA;" class="btn btn-outline-light btn-sm" type="submit">작성</button>
 								</td>
 							</tr>			
 						</tbody>			

@@ -38,7 +38,7 @@
 </head>
 
 <body>
-  <header id="header">
+  <header id="header1">
     <div class="container">
       <div class="row">
         <div class="header clearfix">
@@ -64,11 +64,11 @@
           <div>
 		<div>
 			<!-- <a href="/board/list">목록</a> -->
-			<button type="button" class="btn btn-success btn-sm" onClick="location.href='/board/list'">목록</button>
+			<button type="button" style="background-color: #B2AADA;" class="btn btn-outline-light btn-sm" onClick="location.href='/board/list'">목록</button>
 
 			<c:if test="${sessionScope.mem_id != null}">
 				<!-- <a href="/board/writeView">글 작성</a>  -->
-				<button type="button" class="btn btn-success btn-sm" onClick="location.href='/board/writeView'">글 작성</button>
+				<button type="button" style="background-color: #B2AADA;" class="btn btn-outline-light btn-sm" onClick="location.href='/board/writeView'">글 작성</button>
 			</c:if>
 			
 		</div>

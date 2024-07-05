@@ -106,18 +106,15 @@
  					<input type="hidden" id="searchType" name="searchType" value="${scri.searchType}"> 
  					<input type="hidden" id="keyword" name="keyword" value="${scri.keyword}"> 
 				</form>
-				<div>
-				<c:if test="${sessionScope.mem_id != null}">
-					<button type="submit" class="btn btn-outline-success btn-sm update_btn">수정</button>
-					<button type="submit" class="btn btn-outline-success btn-sm delete_btn">삭제</button>
-				</c:if>	
-					<button type="submit" class="btn btn-outline-success btn-sm list_btn">목록</button>	
-				</div>
+				<br><br><br>
 				<table class="d1"> 
 					<tbody>
 						<tr>
 							<td>
-								<label for="title">제목</label><input readonly class="form-control-plaintext" type="text" id="title" name="title" value="${read.title}" readonly="readonly" /><br>
+								<label for="title">제목</label>
+								
+								<input readonly class="form-control-plaintext" type="text" id="title" name="title" value="${read.title}" readonly="readonly" /><br>
+								
 							</td>
 						</tr>	
 						<tr>
@@ -145,8 +142,14 @@
 						</tr>		
 					</tbody>			
 				</table>
-				<br><br>
-				
+				<br>
+				<div id="buttonlocation">
+				<c:if test="${sessionScope.mem_id != null}">
+					<button type="submit"  style="background-color: #B2AADA;" class="btn btn-outline-light btn-sm update_btn">수정</button>
+					<button type="submit"  style="background-color: #B2AADA;" class="btn btn-outline-light btn-sm delete_btn">삭제</button>
+				</c:if>	
+					<button type="submit"  style="background-color: #B2AADA;" class="btn btn-outline-light btn-sm list_btn">목록</button>	
+				</div>
 				
 				<!-- 댓글 -->
 				<div id="reply" class="d2">
@@ -158,7 +161,8 @@
         						작성 날짜 :  <fmt:formatDate value="${replyList.regdate}" pattern="yyyy-MM-dd" />
         						</p>
 
-        						<p height="100px">${replyList.content}</p>
+        					<!-- 	<p height="100px">${replyList.content}</p>  -->
+        							<input height="150px" style='font-size:12pt' readonly class="form-control-plaintext" value="${replyList.content}">
         						<div>
         						<c:if test="${sessionScope.mem_id != null}">
   									<button type="button" style="background-color: #B2AADA;" class="btn btn-outline-light btn-sm replyUpdateBtn" data-rno="${replyList.rno}">수정</button>

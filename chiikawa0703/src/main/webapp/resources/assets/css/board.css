@@ -1,6 +1,19 @@
 @charset "UTF-8";
 
 
+/* 헤더 */
+#header1 {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9999;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+  height: 50px;
+  background: #fff;
+}
+
+
 /*  상단 바 목록, 글 작성 버튼 */
 /*
 	#chiikawaicon{
@@ -36,6 +49,7 @@
 		background-color:rgba(197,205,221,0.5);
 		/* opacity : 0.5; */
 		margin: 0 auto;
+		color: #381E53;
 	}
 	
 	.d2{
@@ -69,10 +83,12 @@
 	
 	#content{
 		/* width: 300px;  */
-	 	height:200px;
+	 	height:190px;
 	 	/* background-color:rgba(197,205,221,0.5); */
 	 	/* opacity : 0.5; */
-  		color: #229ECF;
+  		background-color:rgba(197,205,221,0.5);
+  		color: #000000;
+  		
   		margin: 0 auto;
 	} 
 	#contentreply{
@@ -80,22 +96,33 @@
 		height:100px;
 		background-color:#C5CDDD;
 		opacity : 0.5;
-  		color: #229ECF;
+  		
+  		color: #000000;
   		margin: 0 auto;
 	}
 	input{
-		color: #229ECF;
+		
+		color: #000000;
+		
 		margin: 0 auto;
 	
 	}
 	#title{
-		color: #229ECF;
+		
+		color: #000000;
+		background-color:rgba(197,205,221,0.5);
 		margin: 0 auto;
 	}
 	#readview{
-		width: 1200px;
-		height: 500px;
+	/*	width: 1200px;
+		height: 500px;  */
 		margin: 0 auto;
+		border-radius: 20px; 
+		width:50%; 
+		background-color:rgba(197,205,221,0.5);
+		/* opacity : 0.5; */
+		
+		color: #381E53;
 	
 	}
 	/*
@@ -107,7 +134,30 @@
 	}
 	*/
 	
+/* 게시글 작성 화면 */
+	#contentbackground{
+		background-color:rgba(197,205,221,0.5);
 	
+	
+	}	
+	
+/* 버튼 위치 */
+	#buttonlocation{
+		margin: 0 auto;
+		position: relative;
+		left: 25%;
+	}	
+	#replydeletelocation{
+		/*
+		margin-left: 500px;
+		margin-top: 500px;
+		*/
+		margin: 0 auto;
+		margin-top:500px;
+		
+	
+	}
+
 /*게시판 테이블 화면 */
 
 	#boardlist{

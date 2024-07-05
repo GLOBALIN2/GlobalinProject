@@ -78,16 +78,16 @@
 			<section id="container">
 				<form name="updateForm" role="form" method="post" action="/board/update">
 					<input type="hidden" name="bno" value="${update.bno}" readonly="readonly"/>
-					<table>
+					<table class="d1">
 						<tbody>
 							<tr>
 								<td>
-									<label for="title">제목</label><input type="text" id="title" name="title" value="${update.title}" class="chk" title="제목을 입력하세요."/>
+									<label for="title">제목</label><input class="form-control" type="text" id="title" name="title" value="${update.title}" class="chk" title="제목을 입력하세요."/>
 								</td>
 							</tr>	
 							<tr>
 								<td>
-									<label for="content">내용</label><textarea id="content" name="content" class="chk" title="제목을 입력하세요."><c:out value="${update.content}" /></textarea>
+									<label for="content">내용</label><textarea class="form-control" id="content" name="content" class="chk" title="제목을 입력하세요."><c:out value="${update.content}" /></textarea>
 								</td>
 							</tr>
 							<tr>
@@ -105,9 +105,9 @@
 							</tr>		
 						</tbody>			
 					</table>
-					<div>
-						<button type="submit" class="btn btn-outline-success btn-sm update_btn">저장</button>
-						<button type="submit" class="btn btn-outline-success btn-sm cancel_btn">취소</button>
+					<div id="buttonlocation">
+						<button type="submit" style="background-color: #B2AADA;" class="btn btn-outline-light btn-sm update_btn">저장</button>
+						<button type="submit" style="background-color: #B2AADA;" class="btn btn-outline-light btn-sm cancel_btn">취소</button>
 					</div>
 				</form>
 			</section>
