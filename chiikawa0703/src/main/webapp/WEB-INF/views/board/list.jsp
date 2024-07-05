@@ -82,7 +82,7 @@
 
     					<input type="text" name="keyword" id="keywordInput" value="${scri.keyword}"/>
 
-    					<button id="searchBtn" class="btn btn-success btn-sm" type="button">검색</button>
+    					<button id="searchBtn" style="background-color: #B2AADA;" class="btn btn-outline-light btn-sm" type="button">검색</button>
 					</div>	
     					<script>
       						$(function(){
