@@ -123,8 +123,12 @@
 		/* opacity : 0.5; */
 		
 		color: #381E53;
-	
 	}
+	#keywordInput{
+		background-color:rgba(197,205,221,0.5);
+		border-width: 0;
+	}
+
 	/*
 	#reply{
 		width: 1200px;
@@ -137,8 +141,6 @@
 /* 게시글 작성 화면 */
 	#contentbackground{
 		background-color:rgba(197,205,221,0.5);
-	
-	
 	}	
 	
 /* 버튼 위치 */
