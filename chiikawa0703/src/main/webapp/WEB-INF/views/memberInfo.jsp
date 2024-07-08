@@ -15,19 +15,22 @@
 </head>
 
 <body> <!--북마켓 챕터 17 updateMember 참고-->
+<fmt:setLocale value = '<%=request.getParameter("language")%>'/>
+   <fmt:bundle basename="bundle.message"> 
 
     <div class="container py-4">
         <div class="p-5 mb-4 bg-body-tertiary rounded-3">
             <div class="container-fluid py-1">
-                <h1 class="display-5 fw-bold">회원 정보 수정</h1>
+                <h1 class="display-5 fw-bold"><fmt:message key="memberupdatemain"/></h1>
                 <p class="col-md-8 fs-4">Membership Updating</p>
             </div>
         </div>
+        <a href="?language=ko">Korean</a> | <a href="?language=jp">Japanese</a>
         <!--회원수정 박스-->
         <div class="container">
             <form name="mem_Update" action= "/user/updateUser" method="post">
                 <div class="mb-3 row">
-                    <label class="col-sm-2">이름</label>
+                    <label class="col-sm-2"><fmt:message key="yourname"/></label>
                     <div class="col-sm-3">
                         <input name="mem_name" type="text" class="form-control" value="${user.mem_name }">
                     </div>
@@ -48,28 +51,28 @@
                 </div>
                 <!--영문 이름-->
                 <div class="mb-3 row">
-                    <label class="col-sm-2">비밀번호</label>
+                    <label class="col-sm-2"><fmt:message key="yourpw"/></label>
                     <div class="col-sm-3">
                         <input name="mem_pwd" type="password" class="form-control" value="${user.mem_pwd }">
                     </div>
                 </div>
                 <!--비밀번호-->              
                 <div class="mb-3 row">
-                    <label class="col-sm-2">이메일</label>
+                    <label class="col-sm-2"><fmt:message key="youremail"/></label>
                     <div class="col-sm-3">
                         <input name="mem_email" type="email" class="form-control" value="${user.mem_email }">
                     </div>
                 </div>
                 <!--이메일-->
                 <div class="mb-3 row">
-                    <label class="col-sm-2">전화번호</label>
+                    <label class="col-sm-2"><fmt:message key="yourphone"/></label>
                     <div class="col-sm-3">
                         <input name="mem_phone" type="text" class="form-control" value="${user.mem_phone }">
                     </div>
                 </div>
                 <!--전화번호-->
                 <div class="mb-3 row">
-                    <label class="col-sm-2 ">주소</label>
+                    <label class="col-sm-2 "><fmt:message key="youraddress"/></label>
                     <div class="col-sm-3">
                         <input name="mem_post" type="text" class="form-control" value="${user.mem_post }">
                     </div>
@@ -84,13 +87,13 @@
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <div class="mb-3 row  me-md-2">
                     <div class="col-sm-offset-2 col-6">
-                        <input type="submit" class="btn btn-primary" value="회원정보 저장하기 ">
+                        <input type="submit" class="btn btn-primary" value="<fmt:message key="memberupdatesavebutton"/>">
                     </div>
                 </div>
                 <!--회원 수정 버튼-->
                 <div class="mb-3 row  me-md-2">
                     <div class="col-sm-offset-2 col-sm-10">
-                   			<input type="button" class="btn btn-outline-dark" onclick="mem_out()" value="탈퇴하기">
+                   			<input type="button" class="btn btn-outline-dark" onclick="mem_out()" value="<fmt:message key="memberoutbutton"/>">
                     </div>
                 </div>
             </div>   
@@ -103,6 +106,7 @@
     		 document.location.href = "/user/mem_out";
     	}
     </script>
+    </fmt:bundle>
 </body>
 
 </html>

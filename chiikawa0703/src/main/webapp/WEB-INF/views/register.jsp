@@ -12,19 +12,22 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
+<fmt:setLocale value = '<%=request.getParameter("language")%>'/>
+   <fmt:bundle basename="bundle.message"> 
     <!--북마켓 챕터 17 updateMember 참고-->
     <div class="container py-4">
         <div class="p-5 mb-4 bg-body-tertiary rounded-3">
             <div class="container-fluid py-1">
-                <h1 class="display-5 fw-bold">회원가입</h1>
+                <h1 class="display-5 fw-bold"><fmt:message key="registerbutton"/></h1>
                 <p class="col-md-8 fs-4">Membership register</p>
             </div>
         </div>
+        <a href="?language=ko">Korean</a> | <a href="?language=jp">Japanese</a>
         <!--회원가입 박스-->
         <div class="container">
             <form id = "registerForm" action="/user/register" method="post">
                 <div class="mb-3 row">
-                 	<label class="col-sm-2">아이디</label>
+                 	<label class="col-sm-2"><fmt:message key="inputid"/></label>
                     <div class="col-sm-3">
                        <input name="mem_id" type="text" class="form-control" id ="mem_id" placeholder="id">
                     </div>
@@ -32,14 +35,14 @@
                 </div>
                 <!--아이디-->
                 <div class="mb-3 row">
-                    <label class="col-sm-2">비밀번호</label>
+                    <label class="col-sm-2"><fmt:message key="inputpw"/></label>
                     <div class="col-sm-3">
                         <input name="mem_pwd" type="password" class="form-control" id = "inputPwd" placeholder="password">
                     </div>
                 </div>
                 <!--비밀번호-->
                 <div class="mb-3 row">
-                    <label class="col-sm-2">이름</label>
+                    <label class="col-sm-2"><fmt:message key="yourname"/></label>
                     <div class="col-sm-3">
                         <input name="mem_name" type="text" class="form-control" placeholder="name">
                     </div>
@@ -60,7 +63,7 @@
                 </div>
                 <!--영문 이름-->
                 <div class="mb-3 row">
-                    <label class="col-sm-2">이메일</label>
+                    <label class="col-sm-2"><fmt:message key="youremail"/></label>
                     <div class="col-sm-10">
                         <div class="row">
                             <div class="col-sm-4">
@@ -74,23 +77,23 @@
                 </div>
                 <!--이메일-->
                 <div class="mb-3 row">
-                    <label class="col-sm-2">전화번호</label>
+                    <label class="col-sm-2"><fmt:message key="yourphone"/></label>
                     <div class="col-sm-3">
                         <input name="mem_phone" type="text" class="form-control" placeholder="phone">
                     </div>
                 </div>
                 <!--전화번호-->
                 <div class="mb-3 row">
-                    <label class="col-sm-2 ">주소</label>
+                    <label class="col-sm-2 "><fmt:message key="youraddress"/></label>
                     <div class="col-sm-3">
-                        <input name="mem_post" type="text" id="sample6_postcode" class="form-control" placeholder="우편번호">
-                        <input type="button" id="findPostcodeButton"  value="우편번호 찾기"> 
+                        <input name="mem_post" type="text" id="sample6_postcode" class="form-control" placeholder="<fmt:message key="addressplaceholder1"/>">
+                        <input type="button" id="findPostcodeButton"  value="<fmt:message key="addressbutton"/>"> 
                     </div> <br> <!--  onclick="sample6_execDaumPostcode()"-->
                     <div class="col-sm-3">
-                        <input name="mem_addr" type="text" id="sample6_address" class="form-control" placeholder="주소">
+                        <input name="mem_addr" type="text" id="sample6_address" class="form-control" placeholder="<fmt:message key="addressplaceholder2"/>">
                     </div>
                     <div class="col-sm-3">
-                        <input name="mem_detail_addr" type="text" id="sample6_extraAddress" class="form-control" placeholder="상세주소">
+                        <input name="mem_detail_addr" type="text" id="sample6_extraAddress" class="form-control" placeholder="<fmt:message key="addressplaceholder3"/>">
                     </div>
                      <!--<input type="text" id="sample6_extraAddress" placeholder="참고항목">-->
                 </div>
@@ -98,7 +101,7 @@
             <div class="d-grid gap-2 d-md-flex ">
                 <div class="mb-3 row  me-md-2">
                     <div class="col-sm-offset-2 col-6">
-                        <input type = "submit" value = "회원가입" class="btn btn-lg btn-success btn-block" id="registerBtn"> <!--disabled="disabled"-->
+                        <input type = "submit" value = "<fmt:message key="registerbutton"/>" class="btn btn-lg btn-success btn-block" id="registerBtn"> <!--disabled="disabled"-->
                     </div>
                 </div>
             </div>
@@ -265,5 +268,6 @@
         }); //End Ajax
     });*/
     </script>
+    </fmt:bundle>
 </body>
 </html>	

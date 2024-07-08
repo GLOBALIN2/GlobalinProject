@@ -20,11 +20,17 @@ div {
 </style>
 </head>
 <body>
+<fmt:setLocale value = '<%=request.getParameter("language")%>'/>
+   <fmt:bundle basename="bundle.message">
+   <!-- 
+	<a href="?language=ko">Korean</a> | <a href="?language=jp">Japanese</a>
+	-->
 	<div>
-		<p>탈퇴 되었습니다!</p>
+		<p><fmt:message key="memoutmain"/></p>
 		<div class="d-grid gap-2 col-4 mx-auto">
-			<button class="btn btn-primary" type="button" onClick="location.href='/home.jsp'">메인으로 이동</button>
+			<button class="btn btn-primary" type="button" onClick="location.href='/home.jsp'"><fmt:message key="gotomainbutton"/></button>
 		</div>
 	</div>
+	</fmt:bundle>
 </body>
 </html>

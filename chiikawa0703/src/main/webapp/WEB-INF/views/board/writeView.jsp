@@ -36,6 +36,8 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 	</head>
 	<body>
+	<fmt:setLocale value = '<%=request.getParameter("language")%>'/>
+   <fmt:bundle basename="bundle.message"> 
 	<div id="wrapper">
 		<div id="root">
 			<header>
@@ -49,7 +51,7 @@
 			<hr />
 			
 			<div><br><br>
-			<h1 class="display-5 fw-bold">게시글 작성</h1>
+			<h1 class="display-5 fw-bold"><fmt:message key="writepagemain"/></h1>
 			</div><br><br>
 			
 			<section id="container">
@@ -58,15 +60,15 @@
 						<tbody>
 							<tr>
 								<td>
-									<label for="title">제목</label>
+									<label for="title"><fmt:message key="boardtitle"/></label>
 									
-									<input class="form-control" type="text" id="title" name="title" class="chk" placeholder="제목을 입력하세요." />
+									<input class="form-control" type="text" id="title" name="title" class="chk" placeholder="<fmt:message key="titleplaceholder"/>" />
 									
 								</td>
 							</tr>	
 							<tr>
 								<td>
-									<label for="content">내용</label><textarea class="form-control" id="content" name="content" class="chk" placeholder="내용을 입력하세요."></textarea>
+									<label for="content"><fmt:message key="boardcontenttext"/></label><textarea class="form-control" id="content" name="content" class="chk" placeholder="<fmt:message key="contentplaceholder"/>"></textarea>
 								</td>
 							</tr>
 							<tr>
@@ -79,16 +81,18 @@
 								-->
 							<tr>
 								<td>						
-									<button style="background-color: #B2AADA;" class="btn btn-outline-light btn-sm" type="submit">작성</button>
+									<button style="background-color: #B2AADA;" class="btn btn-outline-light btn-sm" type="submit"><fmt:message key="writesubmit"/></button>
 								</td>
 							</tr>			
 						</tbody>			
 					</table>
 				</form>
 			</section>
+			<a href="?language=ko">Korean</a> | <a href="?language=jp">Japanese</a>
 			<hr />
 		</div>
 		</div>
 	<%@include file="../includes/footer.jsp"%>		
+	</fmt:bundle>
 	</body>
 </html>

@@ -34,10 +34,12 @@
 		</script>
 	</head>
 	<body>
+	<fmt:setLocale value = '<%=request.getParameter("language")%>'/>
+   <fmt:bundle basename="bundle.message"> 
 	<div id="wrapper">
 		<div id="root">
 			
-				<h2> 게시판</h2>
+				<h2><fmt:message key="boardlistbutton"/></h2>
 			
 	<!--  		<hr />  -->
 	 
@@ -54,7 +56,12 @@
 				<div id="tablesize">
 				
 					<table id = "boardlist" >
-						<tr><th>번호</th><th>제목</th><th>작성자</th><th>등록일</th></tr>
+						<tr>
+						<th><fmt:message key="boardbno"/></th>
+						<th><fmt:message key="boardtitle"/></th>
+						<th><fmt:message key="boardwriter"/></th>
+						<th><fmt:message key="boardregdate"/></th>
+						</tr>
 						
 						<c:forEach items="${list}" var = "list">
 							<tr>
@@ -76,16 +83,17 @@
 					<div class="search">
    						<select style="background:rgba(197,205,221,0.5)" name="searchType">
       					<option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>-----</option>
-      					<option value="t"<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
-      					<option value="c"<c:out value="${scri.searchType eq 'c' ? 'selected' : ''}"/>>내용</option>
-      					<option value="w"<c:out value="${scri.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>
-      					<option value="tc"<c:out value="${scri.searchType eq 'tc' ? 'selected' : ''}"/>>제목+내용</option>
+      					<option value="t"<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>><fmt:message key="checktitletext"/></option>
+      					<option value="c"<c:out value="${scri.searchType eq 'c' ? 'selected' : ''}"/>><fmt:message key="checkcontenttext"/></option>
+      					<option value="w"<c:out value="${scri.searchType eq 'w' ? 'selected' : ''}"/>><fmt:message key="checkwriter"/></option>
+      					<option value="tc"<c:out value="${scri.searchType eq 'tc' ? 'selected' : ''}"/>><fmt:message key="checkheadandmain"/></option>
     					</select>
 
     					<input type="text" name="keyword" id="keywordInput" value="${scri.keyword}"/>
 
-    					<button id="searchBtn" style="background-color: #B2AADA;" class="btn btn-outline-light btn-sm" type="button">검색</button>
+    					<button id="searchBtn" style="background-color: #B2AADA;" class="btn btn-outline-light btn-sm" type="button"><fmt:message key="findbutton"/></button>
 					</div>	
+    					<a style="font-size: small" href="?language=ko">Korean</a> | <a style="font-size: small" href="?language=jp">Japanese</a>
     					<script>
       						$(function(){
         						$('#searchBtn').click(function() {
@@ -98,7 +106,7 @@
 					<div>
   						<ul class="pagination justify-content-center">
     						<c:if test="${pageMaker.prev}">
-    							<li class="page-item"><a style="background-color: #B2AADA; color: white;" class="page-link" href="list${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a></li>
+    							<li class="page-item"><a style="background-color: #B2AADA; color: white;" class="page-link" href="list${pageMaker.makeSearch(pageMaker.startPage - 1)}"><fmt:message key="pagingprevious"/></a></li>
     						</c:if> 
 
     						<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
@@ -106,7 +114,7 @@
     						</c:forEach>
 
     						<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-    							<li class="page-item"><a style="background-color: #B2AADA; color: white;" class="page-link" href="list${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a></li>
+    							<li class="page-item"><a style="background-color: #B2AADA; color: white;" class="page-link" href="list${pageMaker.makeSearch(pageMaker.endPage + 1)}"><fmt:message key="pagingnext"/></a></li>
     						</c:if> 
   						</ul>
 					</div>
@@ -117,5 +125,6 @@
 		</div>
 		</div>
 <%@include file="../includes/footer.jsp"%>		
+</fmt:bundle>
 	</body>
 </html>

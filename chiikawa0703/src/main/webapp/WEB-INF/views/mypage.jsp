@@ -14,17 +14,20 @@
 </head>
 
 <body>
+<fmt:setLocale value = '<%=request.getParameter("language")%>'/>
+   <fmt:bundle basename="bundle.message"> 
     <div class="container py-4">
         <div class="p-5 mb-4 bg-body-tertiary rounded-3">
             <div class="container-fluid py-1">
-                <h1 class="display-5 fw-bold">마이페이지</h1>
+                <h1 class="display-5 fw-bold"><fmt:message key="mypagemain"/></h1>
                 <p class="col-md-8 fs-4">MyPage</p>
             </div>
         </div>
+        <a href="?language=ko">Korean</a> | <a href="?language=jp">Japanese</a>
         <!--회원정보 박스-->
         <div class="container">
                 <div class="mb-3 row">
-                    <label class="col-sm-2">이름</label>
+                    <label class="col-sm-2"><fmt:message key="yourname"/></label>
                     <div class="col-sm-3">${user.mem_name }</div>
                 </div>
                 <!--이름-->
@@ -39,17 +42,17 @@
                 </div>
                 <!--영문 이름-->               
                 <div class="mb-3 row">
-                    <label class="col-sm-2">이메일</label>
+                    <label class="col-sm-2"><fmt:message key="youremail"/></label>
                     <div class="col-sm-3">${user.mem_email }</div>
                 </div>
                 <!--이메일-->
                 <div class="mb-3 row">
-                    <label class="col-sm-2">전화번호</label>
+                    <label class="col-sm-2"><fmt:message key="yourphone"/></label>
                     <div class="col-sm-3">${user.mem_phone}</div>                   
                 </div>
                 <!--전화번호-->
                 <div class="mb-3 row">
-                    <label class="col-sm-2 ">주소</label>
+                    <label class="col-sm-2 "><fmt:message key="youraddress"/></label>
                     <div class="col-sm-3">${user.mem_post }</div>
                     <div class="col-sm-3">${user.mem_addr }</div>
                     <div class="col-sm-3">${user.mem_detail_addr }</div>
@@ -59,7 +62,7 @@
                 <div class="mb-3 row  me-md-2">
                     <div class="col-sm-offset-2 col-6">
                     	<form action = "/user/goChangeMember" method = "get">
-                        <input type = "submit" class="btn btn-primary" value="회원정보 수정하기 ">
+                        <input type = "submit" class="btn btn-primary" value="<fmt:message key="memberupdatebutton"/> ">
                         </form>
                     </div>
                 </div>
@@ -67,7 +70,7 @@
             <form action="<c:url value = '/bookCheck'/>" method="get">
                 <div class="mb-3 row  me-md-2">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <input type="submit" class="btn btn-outline-dark" name="check" value="예약확인하기">
+                        <input type="submit" class="btn btn-outline-dark" name="check" value="<fmt:message key="checkbookbutton"/>">
                     </div>
                 </div>
             </form>
@@ -75,6 +78,7 @@
             </div>
             <!-- 예약 확인 버튼 -->   
         </div>
+        </fmt:bundle>
 </body>
 
 </html>

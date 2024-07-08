@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -488,22 +488,22 @@ html {
         <form action = "/endLogin" method = "post">
            <div class="input">
               <label for="name"></label>
-              <input type="text" name="mem_id" id="name" placeholder="아이디">
+              <input type="text" name="mem_id" id="name" placeholder="<fmt:message key="inputid"/>">
               <span class="spin"></span>
            </div>
      
            <div class="input">
               <label for="pass"></label>
-              <input type="password" name="mem_pwd" id="pass" placeholder="비밀번호">
+              <input type="password" name="mem_pwd" id="pass" placeholder="<fmt:message key="inputpw"/>">
               <span class="spin"></span>
            </div>
      
            <div class="button login">
-              <button type="submit"><span>로그인</span> <i class="fa fa-check"></i></button>
+              <button type="submit"><span><fmt:message key="login"/></span> <i class="fa fa-check"></i></button>
            </div>
         </form>
      
-           <p class="pass-forgot"><span id="findPwd">비밀번호 찾기</span> | <span id = "findId">아이디 찾기</span> | <span id = "register">회원가입</span></p>
+           <p class="pass-forgot"><span id="findPwd"><fmt:message key="findpwbutton"/></span> | <span id = "findId"><fmt:message key="findidbutton"/></span> | <span id = "register"><fmt:message key="registerbutton"/></span></p>
      		<!-- 다국어처리부분 -->
      		<a href="?language=ko">Korean</a> | <a href="?language=jp">Japanese</a>
         </div>

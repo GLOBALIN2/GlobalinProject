@@ -86,6 +86,8 @@
 	</script>
 	
 	<body>
+	<fmt:setLocale value = '<%=request.getParameter("language")%>'/>
+   <fmt:bundle basename="bundle.message"> 
 	<div id="wrapper">
 		<div id="root" >
 			<header>
@@ -111,7 +113,7 @@
 					<tbody>
 						<tr>
 							<td>
-								<label for="title">제목</label>
+								<label for="title"><fmt:message key="boardtitle"/></label>
 								
 								<input readonly class="form-control-plaintext" type="text" id="title" name="title" value="${read.title}" readonly="readonly" /><br>
 								
@@ -119,7 +121,7 @@
 						</tr>	
 						<tr>
 							<td>
-								<label for="content">내용</label><textarea readonly class="form-control-plaintext" id="content" name="content" readonly="readonly"><c:out value="${read.content}" /></textarea><br>
+								<label for="content"><fmt:message key="checkcontenttext"/></label><textarea readonly class="form-control-plaintext" id="content" name="content" readonly="readonly"><c:out value="${read.content}" /></textarea><br>
 							</td>
 						</tr>
 						<tr>
@@ -127,7 +129,7 @@
 							<!-- 
 								<label for="writer">작성자</label><input type="text" id="writer" name="writer" value="${read.writer}"  readonly="readonly"/>
 							-->
-							<label for="writer">작성자</label><input readonly class="form-control-plaintext" type="text" id="writer" name="writer" value="${read.writer}"  readonly="readonly"/>
+							<label for="writer"><fmt:message key="boardwriter"/></label><input readonly class="form-control-plaintext" type="text" id="writer" name="writer" value="${read.writer}"  readonly="readonly"/>
 							<!-- ${mem_id} -->
 							<!-- ${read.writer} --> 
 							</td>
@@ -135,7 +137,7 @@
 						<tr>
 							<td>
 								<div id="regdateleft">
-								<label for="regdate">작성날짜</label><br>
+								<label for="regdate"><fmt:message key="boardregdate"/></label><br>
 								<fmt:formatDate value="${read.regdate}" pattern="yyyy-MM-dd" />		<br>	
 								</div>		
 							</td>
@@ -145,10 +147,10 @@
 				<br>
 				<div id="buttonlocation">
 				<c:if test="${sessionScope.mem_id != null}">
-					<button type="submit"  style="background-color: #B2AADA;" class="btn btn-outline-light btn-sm update_btn">수정</button>
-					<button type="submit"  style="background-color: #B2AADA;" class="btn btn-outline-light btn-sm delete_btn">삭제</button>
+					<button type="submit"  style="background-color: #B2AADA;" class="btn btn-outline-light btn-sm update_btn"><fmt:message key="updatebutton"/></button>
+					<button type="submit"  style="background-color: #B2AADA;" class="btn btn-outline-light btn-sm delete_btn"><fmt:message key="deletebutton"/></button>
 				</c:if>	
-					<button type="submit"  style="background-color: #B2AADA;" class="btn btn-outline-light btn-sm list_btn">목록</button>	
+					<button type="submit"  style="background-color: #B2AADA;" class="btn btn-outline-light btn-sm list_btn"><fmt:message key="boardlistbutton"/></button>	
 				</div>
 				
 				<!-- 댓글 -->
@@ -157,16 +159,16 @@
     					<c:forEach items="${replyList}" var="replyList">
       						<li>
         						<p>
-        						작성자 : ${replyList.writer}<br />
-        						작성 날짜 :  <fmt:formatDate value="${replyList.regdate}" pattern="yyyy-MM-dd" />
+        						<fmt:message key="boardwriter"/> : ${replyList.writer}<br />
+        						<fmt:message key="boardregdate"/> :  <fmt:formatDate value="${replyList.regdate}" pattern="yyyy-MM-dd" />
         						</p>
 
         					<!-- 	<p height="100px">${replyList.content}</p>  -->
         							<input height="150px" style='font-size:12pt' readonly class="form-control-plaintext" value="${replyList.content}">
         						<div>
         						<c:if test="${sessionScope.mem_id != null}">
-  									<button type="button" style="background-color: #B2AADA;" class="btn btn-outline-light btn-sm replyUpdateBtn" data-rno="${replyList.rno}">수정</button>
-  									<button type="button" style="background-color: #B2AADA;" class="btn btn-outline-light btn-sm replyDeleteBtn" data-rno="${replyList.rno}">삭제</button>
+  									<button type="button" style="background-color: #B2AADA;" class="btn btn-outline-light btn-sm replyUpdateBtn" data-rno="${replyList.rno}"><fmt:message key="updatebutton"/></button>
+  									<button type="button" style="background-color: #B2AADA;" class="btn btn-outline-light btn-sm replyDeleteBtn" data-rno="${replyList.rno}"><fmt:message key="deletebutton"/></button>
 								</c:if>
 								</div>
       						</li>
@@ -184,18 +186,20 @@
   				<div id = "replydiv">
     				<!-- <label for="writer">댓글 작성자</label><input type="text" id="writer" name="writer" /> -->
     				<br/>
-    				<label for="content">댓글 내용</label><input type="text" id="contentreplyinput" name="content" />
+    				<label for="content"><fmt:message key="writereply"/></label><input type="text" id="contentreplyinput" name="content" />
   				
   				
- 	 				<button type="button" style="background-color: #B2AADA;" class="btn btn-outline-light btn-sm replyWriteBtn">작성</button>
+ 	 				<button type="button" style="background-color: #B2AADA;" class="btn btn-outline-light btn-sm replyWriteBtn"><fmt:message key="writesubmit"/></button>
   					</div>
   				</div>	
 					</form>
 				
 			</section>
+  					<br><a href="?language=ko">Korean</a> | <a href="?language=jp">Japanese</a>
 			<hr />
 		</div>
 		</div>
 	<%@include file="../includes/footer.jsp"%>		
+	</fmt:bundle>
 	</body>
 </html>

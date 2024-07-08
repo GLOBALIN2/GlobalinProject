@@ -476,29 +476,31 @@ html {
     </style>
   </head>
   <body> 
+  <fmt:setLocale value = '<%=request.getParameter("language")%>'/>
+   <fmt:bundle basename="bundle.message"> 
    <div class="materialContainer">
         <div class="box">
      
-           <div class="title">아이디찾기</div>
+           <div class="title"><fmt:message key="findidbutton"/></div>
         <form action = "/user/findId" method = "post">
            <div class="input">
               <label for="name"></label>
-              <input type="text" name="mem_name" placeholder="이름">
+              <input type="text" name="mem_name" placeholder="<fmt:message key="yourname"/>">
               <span class="spin"></span>
            </div>
      
            <div class="input">
               <label for="pass"></label>
-              <input type="text" name="mem_email" placeholder="이메일">
+              <input type="text" name="mem_email" placeholder="<fmt:message key="youremail"/>">
               <span class="spin"></span>
            </div>
-     
+     <a href="?language=ko">Korean</a> | <a href="?language=jp">Japanese</a>
            <div class="button login">
-              <button type="submit"><span>아이디찾기</span> <i class="fa fa-check"></i></button>
+              <button type="submit"><span><fmt:message key="findidbutton"/></span> <i class="fa fa-check"></i></button>
            </div>
         </form>
      
-           <p class="pass-forgot"><span id="findPwd">비밀번호 찾기</span> | <span id="login">로그인</span></p>
+           <p class="pass-forgot"><span id="findPwd"><fmt:message key="findpwbutton"/></span> | <span id="login"><fmt:message key="login"/></span></p>
      
         </div>
      </div>
@@ -513,5 +515,6 @@ html {
 		document.location.href = '<c:url value="/user/goFindPwd"/>';
 	});
     </script>
+    </fmt:bundle>
   </body>
 </html>
