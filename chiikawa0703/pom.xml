@@ -12,7 +12,11 @@
 		<org.springframework-version>5.0.7.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.9.0</org.aspectj-version>
 		<org.slf4j-version>1.7.25</org.slf4j-version>
+		<!--인코딩관련,오류발생시 아래 한 줄 삭제 -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+	
+
 
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc8 -->
@@ -61,6 +65,8 @@
 			<artifactId>aspectjweaver</artifactId>
 			<version>${org.aspectj-version}</version>
 		</dependency>
+		
+		
 
 
 		<dependency>

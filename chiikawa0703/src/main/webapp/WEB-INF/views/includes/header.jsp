@@ -43,7 +43,7 @@
       <div class="row">
         <div class="header clearfix">
           <h1>
-            <a href="#">
+            <a href="/">
               <em><img src="/resources/assets/img/rogo.png" alt="치이카와호텔" /></em>
               <p>치이카와호텔</p>
             </a>

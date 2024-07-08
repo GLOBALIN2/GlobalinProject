@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
@@ -476,11 +476,15 @@ html {
     </style>
   </head>
   <body> 
+  <%--다국어처리부분 --%>
+  <fmt:setLocale value = '<%=request.getParameter("language")%>'/>
+   <fmt:bundle basename="bundle.message"> 
+    
     <section>
    <div class="materialContainer">
         <div class="box">
      
-           <div class="title">로그인</div>
+           <div class="title"><fmt:message key="login"/></div>
         <form action = "/endLogin" method = "post">
            <div class="input">
               <label for="name"></label>
@@ -500,7 +504,8 @@ html {
         </form>
      
            <p class="pass-forgot"><span id="findPwd">비밀번호 찾기</span> | <span id = "findId">아이디 찾기</span> | <span id = "register">회원가입</span></p>
-     
+     		<!-- 다국어처리부분 -->
+     		<a href="?language=ko">Korean</a> | <a href="?language=jp">Japanese</a>
         </div>
      </div>
     
@@ -518,5 +523,6 @@ html {
 		document.location.href = '<c:url value="/user/register"/>';
 	});
     </script>
+  </fmt:bundle>
   </body>
 </html>
