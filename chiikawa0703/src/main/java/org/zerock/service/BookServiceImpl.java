@@ -33,7 +33,7 @@ public class BookServiceImpl implements BookService {
 //        }
         
 		try {
-			if ( null == book.getBreakfast() ) {
+			if (null == book.getBreakfast()) {
 				book.setBreakfast("x");
 				bookMapper.insertBook(book);
 			} else {

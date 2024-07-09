@@ -29,6 +29,8 @@
 		
 	</script>
 	<body>
+	<fmt:setLocale value = '<%=request.getParameter("language")%>'/>
+   <fmt:bundle basename="bundle.message">
 	<div id="wrapper">
 		<div id="root">
 			<header>
@@ -41,7 +43,7 @@
 			</div>
 			
 			
-			<div><br><br>
+			<div><br><br><br><br>
 			<h1 class="display-5 fw-bold">댓글 수정</h1>
 			</div><br><br>
 		
@@ -57,13 +59,15 @@
 						<tbody>
 							<tr>
 								<td>
-									<label for="content">댓글 내용</label><input type="text" id="contentreply" name="content" value="${replyUpdate.content}"/>
+									
+									<label for="content">댓글 내용</label><textarea style="white-space: pre-wrap; height:auto;" class="chk" class="form-control-plaintext" id="content" name="content" value="${replyUpdate.content}"/>  </textarea>
+									
 								</td>
 							</tr>	
 							
 						</tbody>			
 					</table>
-					<div>
+					<div id="buttonlocation">
 						<button type="submit" style="background-color: #B2AADA;" class="btn btn-outline-light btn-sm update_btn">저장</button>
 						<button type="button" style="background-color: #B2AADA;" class="btn btn-outline-light btn-sm cancel_btn">취소</button>
 					</div>
@@ -73,5 +77,6 @@
 		</div>
 		</div>
 	<%@include file="../includes/footer.jsp"%>		
+	</fmt:bundle>
 	</body>
 </html>

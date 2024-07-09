@@ -99,7 +99,7 @@
 				<%@include file="nav.jsp" %>
 			</div>
 			
-			
+			<br><br><br><br><br>
 			<section id="container">
 				<form name="readForm" role="form" method="post">
 					<input type="hidden" id="bno" name="bno" value="${read.bno}" />
@@ -164,7 +164,9 @@
         						</p>
 
         					<!-- 	<p height="100px">${replyList.content}</p>  -->
-        							<input height="150px" style='font-size:12pt' readonly class="form-control-plaintext" value="${replyList.content}">
+        							<div style='font-size:12pt; height:300px; white-space: pre-line;' class="form-control-plaintext">${replyList.content}</div>
+        							
+        							
         						<div>
         						<c:if test="${sessionScope.mem_id != null}">
   									<button type="button" style="background-color: #B2AADA;" class="btn btn-outline-light btn-sm replyUpdateBtn" data-rno="${replyList.rno}"><fmt:message key="updatebutton"/></button>
