@@ -34,12 +34,12 @@
 			<header>
 				<h1> 게시판</h1>
 			</header>
-			<hr />
+			
 			 
 			<div>
 				<%@include file="nav.jsp" %>
 			</div>
-			<hr />
+			
 			
 			<div><br><br>
 			<h1 class="display-5 fw-bold">댓글 삭제</h1>
@@ -63,7 +63,7 @@
 					</div>
 				</form>
 			</section>
-			<hr />
+			
 		</div>
 		</div>
 	<%@include file="../includes/footer.jsp"%>		

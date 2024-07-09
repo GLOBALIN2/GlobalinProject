@@ -43,12 +43,12 @@
 			<header>
 				<h1> 게시판</h1>
 			</header>
-			<hr />
+			
 			 
 			<div>
 				<%@include file="nav.jsp" %>
 			</div>
-			<hr />
+			
 			
 			<div><br><br>
 			<h1 class="display-5 fw-bold"><fmt:message key="writepagemain"/></h1>
@@ -89,7 +89,7 @@
 				</form>
 			</section>
 			<a href="?language=ko">Korean</a> | <a href="?language=jp">Japanese</a>
-			<hr />
+			
 		</div>
 		</div>
 	<%@include file="../includes/footer.jsp"%>		

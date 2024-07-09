@@ -144,7 +144,7 @@ public class BookController {
 	    	String mem_id = (String) session.getAttribute("mem_id");
 		            
 	    	model.addAttribute("user", userService.getUserInfo(mem_id));
-	    	model.addAttribute("read", bookService.read(book.getBook_no()));	
+	    	model.addAttribute("read", bookService.read(book.getBook_no()));
 	    	return "BookCheckView";
 	    }
 	    

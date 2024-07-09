@@ -93,12 +93,12 @@
 			<header>
 				<h1> 게시판</h1>
 			</header>
-			<hr />
+			
 			 
 			<div>
 				<%@include file="nav.jsp" %>
 			</div>
-			<hr />
+			
 			
 			<section id="container">
 				<form name="readForm" role="form" method="post">
@@ -196,7 +196,7 @@
 				
 			</section>
   					<br><a href="?language=ko">Korean</a> | <a href="?language=jp">Japanese</a>
-			<hr />
+			
 		</div>
 		</div>
 	<%@include file="../includes/footer.jsp"%>		

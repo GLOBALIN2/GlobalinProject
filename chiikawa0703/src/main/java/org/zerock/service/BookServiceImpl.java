@@ -1,5 +1,6 @@
 package org.zerock.service;
 
+import java.awt.print.Book;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class BookServiceImpl implements BookService {
 	@Autowired
     private BookMapper bookMapper;
 	
-	@Transactional(rollbackFor = Exception.class)
+	@Transactional //(rollbackFor = Exception.class)
 	@Override
 	public void booking(BookVO book) {
 		 
@@ -46,7 +47,9 @@ public class BookServiceImpl implements BookService {
 	@Transactional
 	@Override
 	public BookVO read(String book_no) {
-		return bookMapper.read(book_no);
+		
+		BookVO book = bookMapper.read(book_no);
+		return  book;
 	}
 	
 	@Transactional

@@ -199,7 +199,7 @@
                     </ol>
                 </div>
             </div>
-            <div id="alert"></div>
+            <div id="alert1"></div>
             <button id="suiteBtn">예약하기</button>
         </div>
     </div>
@@ -264,6 +264,7 @@
                         <p>인터넷: 와이파이 제공</p>
                     </div>
                 </div>
+                <div id="alert2"></div>
                 <button id = "standardBtn">예약하기</button> 
             </div>
         </div>
@@ -366,7 +367,7 @@
             				let availableRoomCount = 3 - parseInt(result.count);
             				if ( 0 >= availableRoomCount ) {
             					/*alert('해당 날짜에는 객실 예약이 불가합니다.(잔여객실 : 0 개)');*/
-            					$("#alert").css("color", "red").text("해당 날짜에는 객실 예약이 불가합니다.(잔여객실 : 0 개)");
+            					$("#alert1").css("color", "red").text("해당 날짜에는 객실 예약이 불가합니다.(잔여객실 : 0 개)");
             				} else {
             					let msg = '잔여 객실 ' + availableRoomCount + ' 개 있습니다. 예약하시겠습니까?';
             					if ( confirm(msg) ) {
@@ -413,7 +414,7 @@
             				let availableRoomCount = 3 - parseInt(result.count);
             				if ( 0 >= availableRoomCount ) {
             					//alert('해당 날짜에는 객실 예약이 불가합니다.(잔여객실 : 0 개)');
-            					$("#alert").css("color", "red").text("해당 날짜에는 객실 예약이 불가합니다.(잔여객실 : 0 개)");
+            					$("#alert2").css("color", "red").text("해당 날짜에는 객실 예약이 불가합니다.(잔여객실 : 0 개)");
             				} else {
             					let msg = '잔여 객실 ' + availableRoomCount + ' 개 있습니다. 예약하시겠습니까?';
             					if ( confirm(msg) ) {

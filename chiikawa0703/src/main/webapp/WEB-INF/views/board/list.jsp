@@ -48,7 +48,7 @@
 		<!--  	</div> -->
 	
 			<br><br><br><br>
-			<hr />
+			
 			
 			<section id="container">
 				<form role="form" method="get" >
@@ -121,7 +121,7 @@
 					
 				</form>
 			</section>
-			<hr />
+			
 		</div>
 		</div>
 <%@include file="../includes/footer.jsp"%>		

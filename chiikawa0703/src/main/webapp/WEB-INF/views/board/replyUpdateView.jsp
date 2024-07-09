@@ -39,7 +39,7 @@
 			<div>
 				<%@include file="nav.jsp" %>
 			</div>
-			<hr />
+			
 			
 			<div><br><br>
 			<h1 class="display-5 fw-bold">댓글 수정</h1>
@@ -69,7 +69,7 @@
 					</div>
 				</form>
 			</section>
-			<hr />
+			
 		</div>
 		</div>
 	<%@include file="../includes/footer.jsp"%>		
