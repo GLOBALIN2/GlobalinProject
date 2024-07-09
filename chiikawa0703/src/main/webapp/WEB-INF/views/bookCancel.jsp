@@ -23,7 +23,9 @@ div {
 	<div>
 		<p>예약이 취소되었습니다!</p>
 		<div class="d-grid gap-2 col-4 mx-auto">
-			<button class="btn btn-primary" type="button" onClick="location.href='/home.jsp'">메인으로 이동</button>
+		<form action="/goMain" method="get">
+			<button class="btn btn-primary" type="submit">메인으로 이동</button>
+		</form>
 		</div>
 	</div>
 </body>

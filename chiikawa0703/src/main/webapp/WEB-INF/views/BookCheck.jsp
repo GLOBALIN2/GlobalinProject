@@ -20,7 +20,7 @@
 	text-align: center;
 }
 
-/*table,*/ tr, td {
+/*table,*/ th, tr, td {
 	border: 1px solid black;
 	border-collapse: collapse;
 	border-color: rgb(176, 179, 180);
@@ -39,6 +39,11 @@ table, #btn {
 	display: inline-block;
 }
 
+#flexbox {
+	display: flex;
+  	justify-content: space-evenly;
+  	
+}
 </style>
 </head>
 
@@ -51,114 +56,64 @@ table, #btn {
 				<p class="col-md-8 fs-4">Membership Booking Check</p>
 			</div>
 		</div>
-		<!--회원 예약 확인 박스-->
-<!-- 		<c:choose>
-			<c:when test="${empty book }">
-  				예약 정보가 없습니다.
-  			</c:when>
-			<c:otherwise>
-				<div id="box">
+	<!-- <div id="box">
+			<section id="container">
 					<table>
-						<tr>
-							<td>예약번호</td>
-							<td>${book.book_no }</td>
-						</tr>
-						<tr>
-							<td>회원ID</td>
-							<td>${mem_id }</td>
-						</tr>
-						<tr>
-							<td>회원명</td>
-							<td>${user.mem_name } <br> 
-							${user.mem_enfirst } ${user.mem_enlast }</td>
-						</tr>
-						<tr>
-							<td>회원연락처</td>
-							<td>${user.mem_phone }</td>
-						</tr>
-						<tr>
-							<td>회원이메일</td>
-							<td>${user.mem_email }</td>
-						</tr>
-						<tr>
-							<td>예약지점</td>
-							<td>${book.branch }</td>
-						</tr>
-						<tr>
-							<td>객실타입</td>
-							<td>${book.roomtype }</td>
-						</tr>
-						<tr>
-							<td>숙박기간</td>
-							<td>체크인 : ${book.checkin } <br> 
-							체크아웃 : ${book.checkout }
-							</td>
-						</tr>
-						<tr>
-							<td>숙박인원</td>
-							<td>${book.person }</td>
-						</tr>
-						<tr>
-							<td>조식여부</td>
-							<td>${book.breakfast }</td>
-						</tr>
-						<tr>
-							<td>결제방법</td>
-							<td>${book.payment_op }</td>
-						</tr>
-						<tr>
-							<td>결제여부</td>
-							<td>${book.payment }</td>
-						</tr>
-						<tr>
-							<td>취소여부</td>
-							<td>${book.book_cancel }</td>
-						</tr>
-						<tr>
-							<td>총 결제금액</td>
-							<td><fmt:formatNumber value="${book.charge }" type="currency" />원</td>
-							
-						</tr>
-					</table>
-			<div class="mb-3 row d-md-flex justify-content-md-end">
-				<div class="col-sm-offset-2 col-sm-10">
-					<form action="<c:url value = '/cancelBook'/>" method="post">  
-						<input type="submit" class="btn btn-outline-dark"
-							value="취소하기">
-					</form>
-				</div>
-			</div>
-			-->
-			<!-- 예약 취소 버튼 -->
-			
-		<!-- 	
-		</div>
-	
-    </c:otherwise>
- </c:choose>
-		
-		
-	</div>
-	
--->
-	<section id="container">
-				<form role="form" method="post" action="/board/write">
-					<table>
-						<tr><th>번호</th><th>이름</th></tr>
+						<tr><th>예약번호</th><th>예약자명</th><th>체크인</th><th>체크아웃</th><th>예약일</th></tr>
 						
 						<c:forEach items="${bookList}" var = "bookList">
 							<tr>
-								<td><c:out value="${bookList.book_no}" /></td>
+								<td>
+									<a href="/readView?book_no=${bookList.book_no }">
+									<c:out value="${bookList.book_no}" />
+									</a>
+								</td>
+								<td><c:out value="${user.mem_name}" /></td>
+								<td><c:out value="${bookList.checkin}" /></td>
+								<td><c:out value="${bookList.checkout}" /></td>
 								<td><c:out value="${bookList.book_date}" /></td>
-							
-							
 							</tr>
 						</c:forEach>
 						
 					</table>
-				</form>
+					
+						
 			</section>
-	
+
+		</div>  -->
+
+	<div id="flexbox">
+		<c:choose>
+			<c:when test="${empty bookList }">
+				예약 정보가 없습니다.
+		  	</c:when>
+		  	<c:otherwise>
+				<c:forEach items="${bookList}" var = "bookList">
+					<div class="card" style="width: 18rem;">
+						<div class="card-body">
+							
+	  						<h5 class="card-title">
+	  							<c:if test="${ 'o' == book_cancel }">
+				  					[취소]<c:out value="${bookList.book_no}" />
+		  						</c:if>
+	  							<c:if test="${ 'o' != bookList.book_cancel }">
+			  						<a href="/readView?book_no=${bookList.book_no }" class="card-link">
+				  						<c:out value="${bookList.book_no}" />
+			  						</a>
+		  						</c:if>
+	  						</h5><br>	    
+	  						<p class="card-text">치이카와combine <c:out value="${bookList.branch}" /></p>
+					    	<p class="card-text">예약자명 : <c:out value="${user.mem_name}" /></p>
+					    	<p class="card-text">체크인 : <c:out value="${bookList.checkin}" /></p>
+					    	<p class="card-text">체크아웃 : <c:out value="${bookList.checkout}" /></p>
+					    	<p class="card-text">예약일 : <c:out value="${bookList.book_date}" /></p>
+						    
+						</div>
+					</div>
+				</c:forEach>
+			</c:otherwise>
+		</c:choose>
+	</div>
 </body>
 
 </html>

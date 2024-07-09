@@ -8,9 +8,17 @@ public interface BookService {
 	
 	public void booking(BookVO book);
 	
-//	public BookVO getBook(String mem_id);
+	public BookVO read(String book_no);
 	
 	public List<BookVO> getBook(String mem_id);
 	
-	public void cancelBook(String mem_id);
+	public void cancelBook(String book_no);
+	
+	public int getBookedCount(BookVO book);
+	
+	public void canceledBook(BookVO book);
+	
+	public void deleteBook(String book_no);
+	
+	public String getCanceledBook(String mem_id);
 }

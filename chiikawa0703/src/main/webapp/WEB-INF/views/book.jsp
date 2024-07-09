@@ -14,17 +14,21 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
     <style>
-        * {
-            /*padding: 0;
-            margin: 0;*/
-            box-sizing: border-box;
-        }
+      
+        body {
+			  background-image: url(https://lh4.googleusercontent.com/-XplyTa1Za-I/VMSgIyAYkHI/AAAAAAAADxM/oL-rD6VP4ts/w1184-h666/Android-Lollipop-wallpapers-Google-Now-Wallpaper-2.png);
+			  background-position: center;
+			  background-size: cover;
+			  background-repeat: no-repeat;
+			  font-family: 'Roboto', sans-serif;
+	
+}
 
-        #reserve,
         #suiteRoom,
         #standardRoom,
         #choose {
-            border: 1px solid black;
+            border: 1px solid #e9ecef;
+            background-color: #e9ecef;
             margin: 50px 200px;
         }
 
@@ -85,27 +89,52 @@
             font-size: 25px;
             cursor: pointer;
         }
+        
+        #a {
+        	text-align: center;
+        }
+        
+        #b, #c, #d, #e {
+        	background-color: #e9ecef;
+       		margin-top: 50px;
+        	padding: 10px;
+        	font-size: 20px;
+        	text-align: center;
+	        border: 1px solid black;
+			border-color: rgb(176, 179, 180);
+			width: 200px;
+			height: 100px;
+			display: inline-block;
+        }
     </style>
 </head>
 
 <body>
-    <div id="reserve">
-            <select name="branch" id="branch">
-                <option>서울지점</option>
-                <option>부산지점</option>
-            </select>
-            <p>체크인: <input type="text" id="from" name="from"></p>
-            <p>체크아웃: <input type="text" id="to" name="to"></p>
-            <p>인원: <input type="number" min="1" max="3" id="person" name="person"></p>
-            <!-- <input type="button" value="검색 업데이트" /> -->
+    
+    <div id="a">
+	    	<div id="b">지점
+	    		<p> <select name="branch" id="branch">
+	                <option>서울지점</option>
+	                <option>부산지점</option>
+	            </select> </p>
+	    	</div>
+	    	<div id="c">체크인 
+	    		<p><input type="text" id="from" name="from"></p>
+	    	</div>
+	    	<div id="d">체크아웃 
+	    		<p><input type="text" id="to" name="to"></p>
+	    	</div>
+	    	<div id="e">인원 
+	    		<p><input type="number" min="1" max="3" id="person" name="person"></p>
+	    	</div>
+    	
     </div>
     
     <div id="suiteRoom">
         <div id="suiteimg"><img src="/resources/assets/img/rogo.png" alt="스위트" width="300px"></div>
         <div id="suiteinfo">
             <p id="suite">스위트</p>
-            <label for="suiteroom">잔여 객실 수:</label>
-            <input type="text" id="suiteroom" name="스위트객실수" value="10" readonly>
+            <label for="suiteroom">잔여 객실 수:10</label>
             <p>가격 300,000원</p>
             <p>회원가 <span id="charge1">270,000</span>원</p>
             <ul>
@@ -170,6 +199,7 @@
                     </ol>
                 </div>
             </div>
+            <div id="alert"></div>
             <button id="suiteBtn">예약하기</button>
         </div>
     </div>
@@ -178,8 +208,7 @@
         <div>
              <p id="standard">스탠다드</p>
             <form>
-                <label for="standardroom">잔여 객실 수:</label>
-                <input type="text" id="standardroom" name="스탠다드객실수" value="10" readonly>
+                <label for="standardroom">잔여 객실 수:10</label>
             </form>
             <p>가격 150,000원</p>
             <p>회원가 <span id="charge2">135,000</span>원</p>
@@ -321,15 +350,43 @@
                    // var roomName = $('#suite').val();
                     var charge = $('#charge1').text();
                     
-                    document.location.href = '/goBook'
-                                            + '?branch=' + branch
-                                            + '&from=' + checkin
-                                            + '&to=' + checkout
-                                            + '&person=' + person
-                                            + '&roomtype=' + roomtype
-                                           // + '&roomName=' + roomName
-                                            + '&charge=' + charge;
+                    let book = {
+                    	branch:branch
+                    	,roomtype:'suite'
+                    	,checkin:checkin
+                    	,checkout:checkout
+                    };
+                    
+                    $.ajax({
+            			type : 'post',
+            			url : '/book/getSuiteCount',
+            			data : JSON.stringify(book),
+            			contentType : "application/json; charset=utf-8",
+            			success : function(result) {
+            				let availableRoomCount = 3 - parseInt(result.count);
+            				if ( 0 >= availableRoomCount ) {
+            					/*alert('해당 날짜에는 객실 예약이 불가합니다.(잔여객실 : 0 개)');*/
+            					$("#alert").css("color", "red").text("해당 날짜에는 객실 예약이 불가합니다.(잔여객실 : 0 개)");
+            				} else {
+            					let msg = '잔여 객실 ' + availableRoomCount + ' 개 있습니다. 예약하시겠습니까?';
+            					if ( confirm(msg) ) {
+				                    document.location.href = '/goBook'
+				                                            + '?branch=' + branch
+				                                            + '&from=' + checkin
+				                                            + '&to=' + checkout
+				                                            + '&person=' + person
+				                                            + '&roomtype=' + roomtype
+				                                           // + '&roomName=' + roomName
+				                                            + '&charge=' + charge;
+            						
+            					}
+            				}
+            			}
+            		});                 
+                    
                 });
+            	
+            	
 				// 스탠다드
                 $('#standardBtn').click(function() {
                     var branch = $('#branch').val();
@@ -340,15 +397,40 @@
                    // var roomName = $('#standard').val();
                     var charge = $('#charge2').text();
                     
-                    document.location.href = '/goBook'
-                                            + '?branch=' + branch
-                                            + '&from=' + checkin
-                                            + '&to=' + checkout
-                                            + '&person=' + person
-                                            + '&roomtype=' + roomtype
-                                            //+ '&roomName=' + roomName
-                                            + '&charge=' + charge;
-                });
+                    let book = {
+                        	branch:branch
+                        	,roomtype:'standard'
+                        	,checkin:checkin
+                        	,checkout:checkout
+                        };
+                    
+                    $.ajax({
+            			type : 'post',
+            			url : '/book/getStandardCount',
+            			data : JSON.stringify(book),
+            			contentType : "application/json; charset=utf-8",
+            			success : function(result) {
+            				let availableRoomCount = 3 - parseInt(result.count);
+            				if ( 0 >= availableRoomCount ) {
+            					//alert('해당 날짜에는 객실 예약이 불가합니다.(잔여객실 : 0 개)');
+            					$("#alert").css("color", "red").text("해당 날짜에는 객실 예약이 불가합니다.(잔여객실 : 0 개)");
+            				} else {
+            					let msg = '잔여 객실 ' + availableRoomCount + ' 개 있습니다. 예약하시겠습니까?';
+            					if ( confirm(msg) ) {
+				                    document.location.href = '/goBook'
+				                                            + '?branch=' + branch
+				                                            + '&from=' + checkin
+				                                            + '&to=' + checkout
+				                                            + '&person=' + person
+				                                            + '&roomtype=' + roomtype
+				                                           // + '&roomName=' + roomName
+				                                            + '&charge=' + charge;
+            						
+            					}
+            				}
+            			}
+            		});         
+            });
             });
                 /* 비동기 방식 -> 페이지 전환없이 요청 (댓글, 회원가입 유효성 확인 등)
                 $.ajax({

@@ -1,7 +1,5 @@
 package org.zerock.controller;
 
-import java.util.List;
-
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -74,7 +72,7 @@ public class BookController {
 		            model.addAttribute("charge", charge);
 	        // 모델에 데이터를 추가하고 book_detail 페이지로 이동
 	        return "book_detail";
-	    }	    	   
+	    }	 
 	    
 	    // 예약 완료 하기, db저장
 	    @PostMapping("/checkBook") 
@@ -85,18 +83,43 @@ public class BookController {
 	        book.setMem_id(mem_id);
 	        String book_no = RandomStringUtils.randomAlphanumeric(10);
 	        book.setBook_no(book_no);
-	    			bookService.booking(book);
-	    		
-	    			user = userService.getUserInfo(mem_id);
-//	   		    book = bookService.getBook(mem_id);	
-//	   		    model.addAttribute("user", user);	
-//	   		    model.addAttribute("book", book);
-//	   		    
-//	   		 // 이메일 전송
-//	   	      emailService.sendBookingEmail(user.getMem_email(), (BookVO) book);
-//	   	        
+	       
+	        try {
+	            // 예약 서비스 호출
+	            bookService.booking(book);
+	            
+	            // 예약 완료 되면 이메일 전송 
+	            user = userService.getUserInfo(mem_id);	   		    
+		    	book = bookService.read(book_no);			   		     		    		  
+		   	    emailService.sendBookingEmail(user.getMem_email(), book);
+	        } catch (Exception e) {
+	            model.addAttribute("error", "예약을 완료하는 중 오류가 발생했습니다.");
+	            return "errorPage"; // 예약 실패 시 처리할 페이지로 이동
+	        }
+	   	        
 	   	         return "afterLogin";
 	    }
+	    
+	    /*// 예약 완료 하기, db저장
+	    @PostMapping("/checkBook") 
+	    public String booking(HttpServletRequest request, BookVO book, User user, Model model)throws MessagingException  {
+	    	HttpSession session = request.getSession();	  
+	    	String mem_id = (String) session.getAttribute("mem_id");
+	    	 // 세션에서 가져온 mem_id를 BookVO 객체에 설정
+	        book.setMem_id(mem_id);
+	        String book_no = RandomStringUtils.randomAlphanumeric(10);
+	        book.setBook_no(book_no);
+	    	bookService.booking(book);
+	    		
+	    	user = userService.getUserInfo(mem_id);
+	   		    
+	    	book = bookService.read(book_no);	
+	   		     		    
+	   		 // 이메일 전송
+	   	      emailService.sendBookingEmail(user.getMem_email(), book);
+	   	        
+	   	         return "afterLogin";
+	    }*/
 	    
 	    // 마이페이지에서 예약 조회 하기
 	    @GetMapping("/bookCheck")
@@ -104,41 +127,56 @@ public class BookController {
 	    	HttpSession session = request.getSession();
 	    	 
 	    	String mem_id = (String) session.getAttribute("mem_id");
-		            
 	    	 user = userService.getUserInfo(mem_id);
-	    	 
-		     //book = bookService.getBook(mem_id);
-	    	 
+	  
+	    	 model.addAttribute("user", user);
 	    	 model.addAttribute("bookList", bookService.getBook(mem_id));
-	    	 
-	    	 
-	  //  	 model.addAttribute("book", book);
+	//    	 model.addAttribute("book_cancel",  bookService.getCanceledBook(mem_id));
 		            
 	    	return "BookCheck";
 	    }
 	    
-	    // 예약 조회 하기 
-	   /* @GetMapping("/bookCheck")
-	    public String booked(HttpServletRequest request, Model model) {
+	    // 상세조회 하기
+	    @GetMapping("/readView")
+	    public String read(HttpServletRequest request, Model model, BookVO book, User user) {
 	    	HttpSession session = request.getSession();
-	    	 String mem_id = (String) session.getAttribute("mem_id");
-	    	 	// 세션에 저장된 id로 회원 정보 가져옴
-		            User user = userService.getUserInfo(mem_id);
-		            model.addAttribute("user", user);
-		        // 세션에 저장된 id로 예약 정보 가져옴    
-		            BookVO book = bookService.getBookInfo(mem_id);
-		            model.addAttribute("book", book);
-	    	return "BookCheck";
-	    }*/
+	    	 
+	    	String mem_id = (String) session.getAttribute("mem_id");
+		            
+	    	model.addAttribute("user", userService.getUserInfo(mem_id));
+	    	model.addAttribute("read", bookService.read(book.getBook_no()));	
+	    	return "BookCheckView";
+	    }
 	    
 	    // 예약 취소 하기
 	    @PostMapping("/cancelBook") 
-	    public String cancelBook(HttpServletRequest request, BookVO book) {
-	    	HttpSession session = request.getSession();	  
+	    public String cancelBook(HttpServletRequest request,BookVO book, User user) {       
+	    	
+	    	HttpSession session = request.getSession();
+	    	 
 	    	String mem_id = (String) session.getAttribute("mem_id");
-	    	 // 세션에서 가져온 mem_id를 BookVO 객체에 설정	       
-	    	book.setMem_id(mem_id);
-	    	bookService.cancelBook(mem_id);
+	    	user = userService.getUserInfo(mem_id);
+	    	String book_no = request.getParameter("book_no");
+	    	bookService.cancelBook(book_no);
+	    	
+	    	// 예약 취소 메일 보내기 위해 예약된 정보를 가져옴
+	    	book = bookService.read(book_no);
+	    	
+	    	 // 이메일 전송
+	   	    emailService.sendCancelEmail(user.getMem_email(), book);
+	   	    
+	   	    // book테이블에서 canceledBook테이블로 취소된 예약을 옮기고 book테이블에서는 삭제시킴
+	   	    bookService.canceledBook(book);
+	   	    bookService.deleteBook(book_no);
+	   	    
 	    	return "bookCancel";
+	    }
+	    
+	    @GetMapping("/goMain")
+	    public String goMain (HttpServletRequest request) {
+	    	//HttpSession session = request.getSession();
+	    	 
+	    	//String mem_id = (String) session.getAttribute("mem_id");
+	    	return "afterLogin";
 	    }
 }
