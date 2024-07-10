@@ -43,14 +43,17 @@
       <div class="row">
         <div class="header clearfix">
           <h1>
-            <a href="/">
-              <em><img src="/resources/assets/img/rogo.png" alt="치이카와호텔" /></em>
+ 
+            <button id="gotohome">
+            <!--   <em><img src="/resources/assets/img/rogo.png" alt="치이카와호텔" /></em>  -->
               <p><fmt:message key="chiikawacombine"/></p>
-            </a>
+            </button>
+           
+            
           </h1>
           <nav id="mNav">
             <h2 class="ir_so">치이카와호텔 전체메뉴</h2>
-            <a href="#" class="ham"><span></span></a>
+            <a href="/endLogin" id="homebutton" class="ham"><span></span></a>
           </nav>
           <nav class="nav">
             <ul class="clearfix">
@@ -89,6 +92,17 @@
   
   <script>
   
+  
+  		// 홈페이지로 가기
+  		
+    document.getElementById('gotohome').addEventListener('click', function() {
+        
+        document.location.href="/endLogin"; 
+        // 또는 window.location.href = '/newPage'; // 다른 페이지로 이동하는 경우
+    });
+
+  		 
+  
   		// 마이페이지로 가기
   		document.getElementById('mypage').addEventListener('click', function() {
 			console.log(mypage);
@@ -108,6 +122,9 @@
 	  	document.getElementById('board').addEventListener('click', function() {
 				document.location.href = '<c:url value="../board/list"/>';
 		});
+	  	
+
+</script>
   </script>
   
   

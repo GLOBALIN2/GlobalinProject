@@ -10,6 +10,16 @@
     <title>로그인폼</title>
    
     <style>
+   body {
+  background-image: url(/resources/assets/img/pool.jpg);
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  font-family: 'Roboto', sans-serif;
+}
+   
+   
       .findIdForm {
         display: inline-block;
         position: static;
@@ -40,15 +50,7 @@
   cursor: pointer;
 }
 
-body {
-    background-image: url(https://lh4.googleusercontent.com/-XplyTa1Za-I/VMSgIyAYkHI/AAAAAAAADxM/oL-rD6VP4ts/w1184-h666/Android-Lollipop-wallpapers-Google-Now-Wallpaper-2.png);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    min-height: 100vh;
-    font-family: 'Roboto', sans-serif;
-    overflow: hidden;
-}
+
     </style>
   </head>
   <body> 

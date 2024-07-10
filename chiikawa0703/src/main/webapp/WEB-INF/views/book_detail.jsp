@@ -12,12 +12,25 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <title>예약상세</title>
 <style>
+
+	body {
+  background-image: url(/resources/assets/img/pool.jpg);
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  font-family: 'Roboto', sans-serif;
+}   
+
 #container {
 	margin: 100px;
 	display: grid;
 	grid-template-columns: 300px 300px 300px;
 	grid-gap: 50px;
+	
 }
+
+
 
 input {
 	border: none;
@@ -41,17 +54,28 @@ input {
 #book:hover {
 	cursor: pointer;
 }
+
+.container-fluid {
+	background-color:white;
+	opacity: 0.9;
+	margin: 0 auto;
+	position: relative;
+	top: 200px;
+}
+
+p, input {
+	font-size:20px;
+	font-weight:500;
+}
+
+#meminfo, #bookinfo {
+	margin-top:80px;
+}
 </style>
 </head>
 <body>
 <div class="container py-4">
- 		<div class="p-5 mb-4 bg-body-tertiary rounded-3">
-            <div class="container-fluid py-1">
-                <h1 class="display-5 fw-bold">예약하기</h1>
-                <p class="col-md-8 fs-4">Booking</p>
-            </div>
-        </div>    
-		 <div class="container-fluid" style="background-color: white;">
+	<div class="container-fluid">
         <div class="row">
             <!-- row 1 (total : 12) -->
             <div class="col-4" style="background-color: white;">
@@ -60,15 +84,15 @@ input {
                 <p>지점 : ${branch }</p>
                 <p>${roomtype }</p>
                 <p>인원 : ${person }</p>
-                 <img src="/resources/assets/img/rogo.png" alt="스위트" width="300px">
+                 <img src="/resources/assets/img/suite.jpg" alt="스위트" width="400px" height= "300px">
             </div>
-            <div class="col-4" style="background-color: white;">
+            <div class="col-4" id="meminfo">
                <p>예약자명 : ${user.mem_name }</p>
                <p>영문명 : ${user.mem_enfirst } ${user.mem_enlast}</p>
 			   <p>예약자 연락처 : ${user.mem_phone }</p>
 			   <p>예약자 이메일 : ${user.mem_email }</p>
             </div>
-            <div class="col-4" style="background-color: white;">
+            <div class="col-4" id="bookinfo">
 <form action="/checkBook" method="post" id="bookingForm">
  				<input type="hidden" name="mem_id" value="${mem_id}">
 				<input type="hidden" name="checkin" value="${checkin}">
@@ -78,12 +102,12 @@ input {
         		<input type="hidden" name="roomtype" value="${roomtype}">
         		<input type="hidden" id="chargeInput" name="charge" value="${charge}">
         		
-				<label for="card">신용카드</label> 
-				<input type="radio" id="card" name="payment_op" value="카드"> <br>
-			    <label for="cash">카카오페이</label>
-				<input type="radio" id="cash" name="payment_op" value="카카오페이"> <br>
-				<label for="bank">무통장입금</label> 
-				<input type="radio" id="bank" name="payment_op" value="무통장입금"> <br><br>
+				<p><label for="card">신용카드</label> 
+				<input type="radio" id="card" name="payment_op" value="카드"></p>
+			    <p><label for="cash">카카오페이</label>
+				<input type="radio" id="cash" name="payment_op" value="카카오페이"></p>
+				<p><label for="bank">무통장입금</label> 
+				<input type="radio" id="bank" name="payment_op" value="무통장입금"></p> <br>
 				<p> <input type="checkbox" id="breakfast" name="breakfast" value="o">조식추가(1인+5만원) </p>
 				<p>최종금액 :<span id="chargeDisplay">${charge}</span>원</p>
 				<button type="submit" id="book">예약하기</button>
@@ -94,52 +118,24 @@ input {
  </div>
  
  <script type="text/javascript">
- // 조식 추가하면 가격 오르기
- // 요소와 값을 분리해야 함 / 변수와 DOM 요소	
-document.addEventListener("DOMContentLoaded", function() { // 문서가 완전히 로드된 후 스크립트가 실행
-	let chargeInputElement = document.getElementById("chargeInput");	// 폼에 있는 가격 요소
-	let chargeDisplayElement = document.getElementById("chargeDisplay"); // 화면에 보이는 가격 요소
-	let chargeInput = chargeInputElement.value;  // 폼에 있는 가격의 value를 가져옴
-	let num = parseInt(chargeInput.replace(/,/g, ''), 10); // 쉼표 제거 후 숫자로 변환
-	let charge = num;	// 숫자로 변환한 값을 charge에 대입
-	//console.log(chargeInput);
-	//console.log(charge);
-	
-	 console.log(chargeInput);
-	 console.log(charge);
-	 let breakfast = document.getElementById("breakfast"); // 조식을 선택하면 값이 오를 것
-	 let person = parseInt(document.getElementById("person").value, 10); // 인원수
-	 
-	 breakfast.addEventListener("change", function() {
-		 if(breakfast.checked) { // breakfast를 누르면 change이벤트가 발생
-			 charge += (50000 * person); // 1인 조식 가격5만원 -> 5만원*인원수 -> charge에 더함 
-		 } else {
-			 charge -= (50000 * person); // 체크를 해지 하면 원래 가격으로 내려감
-		 }
-		 chargeInputElement.value = charge;	// 폼에 있는 가격을 업데이트
-		 chargeDisplayElement.textContent = charge.toLocaleString(); // 화면에 보이는 가격 업데이트, toLocaleString은 천 단위로 ,찍음
-	 });	
- });
- /*function sendMail() {
-		openAjaxLayer(); // ?
-		$.ajax({
-			type : "post",
-			url : "/mail",
-			data : {
-				mail : mail
-			},
-			dataType : "json"
-		//contentType: "application/json; charset=utf-8"
-		}).done(function(msg) {
-			$('.ajaxLayer').hide();
-			if ( 'Y' == msg.isSuccess ) {
-				alert('메일이 정상적으로 발송되었습니다.');
-			} else {
-				alert('시스템 에러가 발생했습니다.');
-			}
-		});
-	}*/
-
+	// 조식 추가하면 가격 오르기
+	// 요소와 값을 분리해야 함 / 변수와 DOM 요소	
+		let chargeInputElement = document.getElementById("chargeInput");	// 폼에 있는 가격 요소
+		let chargeDisplayElement = document.getElementById("chargeDisplay"); // 화면에 보이는 가격 요소
+		let chargeInput = chargeInputElement.value;  // 폼에 있는 가격의 value를 가져옴
+		let num = parseInt(chargeInput.replace(/,/g, ''), 10); // 쉼표 제거 후 숫자로 변환
+		let charge = num;	// 숫자로 변환한 값을 charge에 대입
+		 let breakfast = document.getElementById("breakfast"); // 조식을 선택하면 값이 오를 것
+		 let person = parseInt(document.getElementById("person").value, 10); // 인원수
+		 breakfast.addEventListener("change", function() {
+			 if(breakfast.checked) { // breakfast를 누르면 change이벤트가 발생
+				 charge += (50000 * person); // 1인 조식 가격5만원 -> 5만원*인원수 -> charge에 더함 
+			 } else {
+				 charge -= (50000 * person); // 체크를 해지 하면 원래 가격으로 내려감
+			 }
+			 chargeInputElement.value = charge;	// 폼에 있는 가격을 업데이트
+			 chargeDisplayElement.textContent = charge.toLocaleString(); // 화면에 보이는 가격 업데이트, toLocaleString은 천 단위로 ,찍음
+		 });
  </script>
 </body>
 </html>

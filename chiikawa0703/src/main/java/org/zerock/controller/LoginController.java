@@ -42,6 +42,18 @@ public class LoginController {
             return "loginForm";
         }
     }
+    
+    
+    //헤더 홈으로 가는 버튼
+    @GetMapping("/endLogin")
+    public String goToHome() {
+        
+        	return "afterLogin";
+        }
+        
+    
+    
+    
     	// 로그아웃
     	@GetMapping("/logout") 
     	public String logout(HttpServletRequest request) {

@@ -164,7 +164,7 @@
         						</p>
 
         					<!-- 	<p height="100px">${replyList.content}</p>  -->
-        							<div style='font-size:12pt; height:300px; white-space: pre-line;' class="form-control-plaintext">${replyList.content}</div>
+        							<div style='font-size:12pt; height:auto; white-space: pre-line;' class="form-control-plaintext">${replyList.content}</div>
         							
         							
         						<div>
@@ -191,13 +191,13 @@
     				<label for="content"><fmt:message key="writereply"/></label><input type="text" id="contentreplyinput" name="content" />
   				
   				
- 	 				<button type="button" style="background-color: #B2AADA;" class="btn btn-outline-light btn-sm replyWriteBtn"><fmt:message key="writesubmit"/></button>
+  				<button type="button" style="background-color: #B2AADA;" class="btn btn-outline-light btn-sm replyWriteBtn"><fmt:message key="writesubmit"/></button>
   					</div>
   				</div>	
 					</form>
 				
 			</section>
-  					<br><a href="?language=ko">Korean</a> | <a href="?language=jp">Japanese</a>
+ <!--  					<br><a href="?language=ko">Korean</a> | <a href="?language=jp">Japanese</a> -->
 			
 		</div>
 		</div>

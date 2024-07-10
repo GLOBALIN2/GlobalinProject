@@ -10,6 +10,31 @@
     <title>회원가입</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<style>
+
+#a, #b {
+color: rgb(4, 160, 222);
+}
+
+
+body {
+  background-image: url(/resources/assets/img/pool.jpg);
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  font-family: 'Roboto', sans-serif;
+}
+
+#container {
+
+	background-color:white;
+	text-align: center;
+	padding: 10px;
+}
+
+</style>
+
 </head>
 <body>
 <fmt:setLocale value = '<%=request.getParameter("language")%>'/>
@@ -18,13 +43,13 @@
     <div class="container py-4">
         <div class="p-5 mb-4 bg-body-tertiary rounded-3">
             <div class="container-fluid py-1">
-                <h1 class="display-5 fw-bold"><fmt:message key="registerbutton"/></h1>
-                <p class="col-md-8 fs-4">Membership register</p>
+                <h1 id="a" class="display-5 fw-bold"><fmt:message key="registerbutton"/></h1>
+                <p id="b" class="col-md-8 fs-4">Membership register</p>
             </div>
         </div>
         <a href="?language=ko">Korean</a> | <a href="?language=jp">Japanese</a>
         <!--회원가입 박스-->
-        <div class="container">
+        <div id="container">
             <form id = "registerForm" action="/user/register" method="post">
                 <div class="mb-3 row">
                  	<label class="col-sm-2"><fmt:message key="inputid"/></label>
@@ -83,25 +108,32 @@
                     </div>
                 </div>
                 <!--전화번호-->
-                <div class="mb-3 row">
-                    <label class="col-sm-2 "><fmt:message key="youraddress"/></label>
+               <div class="mb-3 row">
+                    <label class="col-sm-2"><fmt:message key="addressplaceholder1"/></label>
                     <div class="col-sm-3">
                         <input name="mem_post" type="text" id="sample6_postcode" class="form-control" placeholder="<fmt:message key="addressplaceholder1"/>">
-                        <input type="button" id="findPostcodeButton"  value="<fmt:message key="addressbutton"/>"> 
-                    </div> <br> <!--  onclick="sample6_execDaumPostcode()"-->
+                        <input type="button" id="findPostcodeButton" class="btn btn-primary" value="<fmt:message key="addressbutton"/>"> 
+                    </div>
+                </div>
+                
+                <div class="mb-3 row">
+                    <label class="col-sm-2"><fmt:message key="addressplaceholder2"/></label>
                     <div class="col-sm-3">
                         <input name="mem_addr" type="text" id="sample6_address" class="form-control" placeholder="<fmt:message key="addressplaceholder2"/>">
                     </div>
+                </div>
+                
+                 <div class="mb-3 row">
+                    <label class="col-sm-2"><fmt:message key="addressplaceholder3"/></label>
                     <div class="col-sm-3">
                         <input name="mem_detail_addr" type="text" id="sample6_extraAddress" class="form-control" placeholder="<fmt:message key="addressplaceholder3"/>">
                     </div>
-                     <!--<input type="text" id="sample6_extraAddress" placeholder="참고항목">-->
                 </div>
                 <!--주소-->
             <div class="d-grid gap-2 d-md-flex ">
                 <div class="mb-3 row  me-md-2">
                     <div class="col-sm-offset-2 col-6">
-                        <input type = "submit" value = "<fmt:message key="registerbutton"/>" class="btn btn-lg btn-success btn-block" id="registerBtn"> <!--disabled="disabled"-->
+                        <input type = "submit" value = "<fmt:message key="registerbutton"/>" class="btn btn-lg btn-primary btn-block" id="registerBtn"> <!--disabled="disabled"-->
                     </div>
                 </div>
             </div>

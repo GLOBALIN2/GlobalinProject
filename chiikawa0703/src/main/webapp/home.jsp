@@ -14,7 +14,7 @@
   <meta name="format-detection" content="telephone=no" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
-  <title>치이카와호텔</title>
+  <title>치이카와COMBINE</title>
 
   <!-- css -->
   <link rel="stylesheet" href="/resources/assets/css/reset19.css" />
@@ -42,7 +42,7 @@
             </a>
           </h1>
           <nav id="mNav">
-            <h2 class="ir_so">치이카와호텔 전체메뉴</h2>
+            <h2 class="ir_so">치이카와COMBINE 전체메뉴</h2>
             <a href="#" class="ham"><span></span></a>
           </nav>
           <nav class="nav">

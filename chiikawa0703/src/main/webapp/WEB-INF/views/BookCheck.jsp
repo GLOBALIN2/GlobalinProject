@@ -16,6 +16,20 @@
 	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
 	crossorigin="anonymous">
 <style>
+
+body {
+  background-image: url(/resources/assets/img/pool.jpg);
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  font-family: 'Roboto', sans-serif;
+}
+
+#containerfluid{
+	opacity:0.9;
+}
+
 #box {
 	text-align: center;
 }
@@ -43,15 +57,16 @@ table, #btn {
 	display: flex;
   	justify-content: space-evenly;
   	
+  	
 }
 </style>
 </head>
 
 <body>
 
-	<div class="container py-4">
+	<div id="containerfluid" class="container py-4">
 		<div class="p-5 mb-4 bg-body-tertiary rounded-3">
-			<div class="container-fluid py-1">
+			<div  class="container-fluid py-1">
 				<h1 class="display-5 fw-bold">회원 예약 확인</h1>
 				<p class="col-md-8 fs-4">Membership Booking Check</p>
 			</div>

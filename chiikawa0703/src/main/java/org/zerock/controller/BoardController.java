@@ -133,7 +133,7 @@ private static final Logger logger = LoggerFactory.getLogger(BoardController.cla
 		
 		
 	// 게시글 수정
-		@ResponseBody
+	//	@ResponseBody
 		@RequestMapping(value = "/update", method = RequestMethod.POST, produces = "text/html; charset=utf-8")
 		public String update(BoardVO boardVO, @ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr, HttpServletRequest request) throws Exception{
 			logger.info("update");
@@ -158,28 +158,28 @@ private static final Logger logger = LoggerFactory.getLogger(BoardController.cla
 				rttr.addAttribute("searchType", scri.getSearchType());
 				rttr.addAttribute("keyword", scri.getKeyword());
 				
-			//	return "redirect:/board/list";
+				return "redirect:/board/list";
 				
-				String msg = "<script type='text/javascript'>";
-			//	msg += "window.location.href='/WEB-INF/views/board/list.jsp';";
-				msg += "history.go(-3);";
-				msg += "</script>";
-				
-				return msg;
+//				String msg = "<script type='text/javascript'>";
+//			//	msg += "window.location.href='/WEB-INF/views/board/list.jsp';";
+//				msg += "history.go(-3);";
+//				msg += "</script>";
+//				
+//				return msg;
 				
 				
 			} else {
 			//권한이 없을 경우의 처리	
-			//	rttr.addFlashAttribute("msg", "수정 권한이 없습니다.");
-				 String msg = "<script type='text/javascript'>";
-				  
-		           msg += "alert('권한이 없습니다.');";
-		       
-		        msg += "history.go(-3);"; // 이전 페이지로 돌아가기
-		        msg += "</script>";
-			
-		        //	return "redirect:/board/updateView?bno=" + boardVO.getBno();
-			return msg;
+				rttr.addFlashAttribute("msg", "수정 권한이 없습니다.");
+//				 String msg = "<script type='text/javascript'>";
+//				  
+//		           msg += "alert('권한이 없습니다.');";
+//		       
+//		        msg += "history.go(-3);"; // 이전 페이지로 돌아가기
+//		        msg += "</script>";
+//			
+		        	return "redirect:/board/updateView?bno=" + boardVO.getBno();
+//			return msg;
 		}
 			
 
@@ -188,7 +188,7 @@ private static final Logger logger = LoggerFactory.getLogger(BoardController.cla
 		}
 		
 		// 게시글 삭제
-		@ResponseBody
+//		@ResponseBody
 		@RequestMapping(value = "/delete", method = RequestMethod.POST)
 		public String delete(BoardVO boardVO, @ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr, HttpServletRequest request) throws Exception{
 			
@@ -215,27 +215,28 @@ private static final Logger logger = LoggerFactory.getLogger(BoardController.cla
 			rttr.addAttribute("keyword", scri.getKeyword());
 			
 			//@responsebody가 없을 경우 이걸로 가능
-			//return "redirect:/board/list";
+			return "redirect:/board/list";
 			
 			//@responsebody 때문에 이런 식으로 작성해야 함..새로고침도 필요
-			String msg = "<script type='text/javascript'>";
-			//	msg += "window.location.href='/WEB-INF/views/board/list.jsp';";
-				msg += "history.go(-3);";
-				msg += "</script>";
+//			String msg = "<script type='text/javascript'>";
+//			//	msg += "window.location.href='/WEB-INF/views/board/list.jsp';";
+//				msg += "history.go(-3);";
+//				msg += "</script>";
 				
-				return msg;
+//				return msg;
 			} else {
 				//권한이 없을 경우의 처리	
-				//	rttr.addFlashAttribute("msg", "수정 권한이 없습니다.");
-					 String msg = "<script type='text/javascript'>";
-					  
-			           msg += "alert('권한이 없습니다.');";
-			       
-			        msg += "history.go(-3);"; // 이전 페이지로 돌아가기
-			        msg += "</script>";
-				
-			        //	return "redirect:/board/updateView?bno=" + boardVO.getBno();
-				return msg;
+					rttr.addFlashAttribute("msg", "수정 권한이 없습니다.");
+//					 String msg = "<script type='text/javascript'>";
+//					  
+//			           msg += "alert('권한이 없습니다.');";
+//			       
+//			        msg += "history.go(-3);"; // 이전 페이지로 돌아가기
+//			        msg += "</script>";
+//				
+//			        	return "redirect:/board/updateView?bno=" + boardVO.getBno();
+//				return msg;
+					return "redirect:/board/readView";
 			}
 		}
 		
@@ -272,13 +273,15 @@ private static final Logger logger = LoggerFactory.getLogger(BoardController.cla
 			model.addAttribute("scri", scri);
 			
 			return "board/replyUpdateView";
+			
 		}
 		
 	//댓글 수정 POST
-		@ResponseBody
+//		@ResponseBody
 		@RequestMapping(value="/replyUpdate", method = RequestMethod.POST)
-		public String replyUpdate(ReplyVO vo, SearchCriteria scri, RedirectAttributes rttr, HttpServletRequest request) throws Exception {
+		public String replyUpdate(ReplyVO vo, BoardVO boardVO, SearchCriteria scri, RedirectAttributes rttr, HttpServletRequest request) throws Exception {
 			logger.info("reply Write");
+			
 			
 			//세션에서 사용자 id 가져오기
 			HttpSession session = request.getSession();
@@ -300,28 +303,30 @@ private static final Logger logger = LoggerFactory.getLogger(BoardController.cla
 			rttr.addAttribute("searchType", scri.getSearchType());
 			rttr.addAttribute("keyword", scri.getKeyword());
 			
-	//		return "redirect:/board/readView";
+			return "redirect:/board/readView";
 			
-			//@responsebody 때문에 이런 식으로 작성해야 함..새로고침도 필요
-			String msg = "<script type='text/javascript'>";
-			//	msg += "window.location.href='/WEB-INF/views/board/list.jsp';";
-				msg += "history.go(-3);";
-				msg += "</script>";
-				
-				return msg;
+			
+//			//@responsebody 때문에 이런 식으로 작성해야 함..새로고침도 필요
+//			String msg = "<script type='text/javascript'>";
+//			//	msg += "window.location.href='/WEB-INF/views/board/list.jsp';";
+//				msg += "history.go(-3);";
+//				msg += "</script>";
+//				
+//				return msg;
 			
 		} else {
 			//권한이 없을 경우의 처리	
 			
-				 String msg = "<script type='text/javascript'>";
-				  
-		           msg += "alert('권한이 없습니다.');";
-		       
-		        msg += "history.go(-3);"; // 이전 페이지로 돌아가기
-		        msg += "</script>";
-			
-		        //	return "redirect:/board/updateView?bno=" + boardVO.getBno();
-			return msg;
+//				 String msg = "<script type='text/javascript'>";
+//				  
+//		           msg += "alert('권한이 없습니다.');";
+//		       
+//		        msg += "history.go(-3);"; // 이전 페이지로 돌아가기
+//		        msg += "</script>";
+//			
+//		        	return "redirect:/board/replyUpdateView?bno=" + boardVO.getBno();
+//			return msg;
+			return "redirect:/board/list";
 		}
 	}
 		
@@ -335,12 +340,13 @@ private static final Logger logger = LoggerFactory.getLogger(BoardController.cla
 			
 
 			return "board/replyDeleteView";
+			
 		}
 		
 	//댓글 삭제 POST
-		@ResponseBody
+//		@ResponseBody
 		@RequestMapping(value="/replyDelete", method = RequestMethod.POST)
-		public String replyDelete(ReplyVO vo, SearchCriteria scri, RedirectAttributes rttr, HttpServletRequest request) throws Exception {
+		public String replyDelete(ReplyVO vo, BoardVO boardVO, SearchCriteria scri, RedirectAttributes rttr, HttpServletRequest request) throws Exception {
 			logger.info("reply Write");
 			
 			//세션에서 사용자 id 가져오기
@@ -363,27 +369,28 @@ private static final Logger logger = LoggerFactory.getLogger(BoardController.cla
 			rttr.addAttribute("searchType", scri.getSearchType());
 			rttr.addAttribute("keyword", scri.getKeyword());
 			
-	//		return "redirect:/board/readView";
+			return "redirect:/board/readView";
 			
-			//@responsebody 때문에 이런 식으로 작성해야 함..새로고침도 필요
-			String msg = "<script type='text/javascript'>";
-			//	msg += "window.location.href='/WEB-INF/views/board/list.jsp';";
-				msg += "history.go(-3);";
-				msg += "</script>";
-				
-				return msg;
+//			//@responsebody 때문에 이런 식으로 작성해야 함..새로고침도 필요
+//			String msg = "<script type='text/javascript'>";
+//			//	msg += "window.location.href='/WEB-INF/views/board/list.jsp';";
+//				msg += "history.go(-3);";
+//				msg += "</script>";
+//				
+//				return msg;
 		} else {
 			//권한이 없을 경우의 처리	
-			//	rttr.addFlashAttribute("msg", "수정 권한이 없습니다.");
-				 String msg = "<script type='text/javascript'>";
-				  
-		           msg += "alert('You can't.');";
-		       
-		        msg += "history.go(-3);"; // 이전 페이지로 돌아가기
-		        msg += "</script>";
-			
-		        //	return "redirect:/board/updateView?bno=" + boardVO.getBno();
-			return msg;
+				rttr.addFlashAttribute("msg", "수정 권한이 없습니다.");
+//				 String msg = "<script type='text/javascript'>";
+//				  
+//		           msg += "alert('You can't.');";
+//		       
+//		        msg += "history.go(-3);"; // 이전 페이지로 돌아가기
+//		        msg += "</script>";
+//			
+//		        	return "redirect:/board/updateView?bno=" + boardVO.getBno();
+//			return msg;
+				return "redirect:/board/list";
 		}
 	}
 }

@@ -15,14 +15,14 @@
     <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
     <style>
       
-        body {
-			  background-image: url(https://lh4.googleusercontent.com/-XplyTa1Za-I/VMSgIyAYkHI/AAAAAAAADxM/oL-rD6VP4ts/w1184-h666/Android-Lollipop-wallpapers-Google-Now-Wallpaper-2.png);
-			  background-position: center;
-			  background-size: cover;
-			  background-repeat: no-repeat;
-			  font-family: 'Roboto', sans-serif;
-	
-}
+     	body {
+  background-image: url(/resources/assets/img/pool.jpg);
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  font-family: 'Roboto', sans-serif;
+}   
 
         #suiteRoom,
         #standardRoom,
@@ -30,13 +30,33 @@
             border: 1px solid #e9ecef;
             background-color: #e9ecef;
             margin: 50px 200px;
+            
         }
 
         #suiteRoom,
         #standardRoom {
+        	height: 300px;
             display: grid;
+            width: 900px;
             grid-template-columns: 300px 300px 300px;
             grid-gap: 50px;
+            margin-left: auto;
+            margin-right: auto;
+            
+        }
+        
+        #suiteinfo, #standardinfo  {
+        margin-left: 80px;
+        	/*padding: 60px;*/
+        }
+        
+        p {
+        	font-size: 20px;
+        	font-weight: 700;
+        }
+        
+        li {
+        	margin-top:20px;
         }
 
         #btnWrap {
@@ -44,11 +64,11 @@
             margin: 100px auto;
         }
 
-        #popupBtn1, #popupBtn2, #standardBtn, #suiteBtn {
+        #popupBtn1, #popupBtn2, #standardBtn, #suiteBtn {          
             width: 150px;
             height: 50px;
             padding: 10px 5px;
-            background-color: #007bff;
+            background-color: rgb(4, 160, 222);
             color: #fff;
             /* 텍스트 색상을 지정하세요 */
             border: none;
@@ -95,6 +115,7 @@
         }
         
         #b, #c, #d, #e {
+        	font-weight: 700;
         	background-color: #e9ecef;
        		margin-top: 50px;
         	padding: 10px;
@@ -103,8 +124,9 @@
 	        border: 1px solid black;
 			border-color: rgb(176, 179, 180);
 			width: 200px;
-			height: 100px;
+			height: 80px;
 			display: inline-block;
+			
         }
     </style>
 </head>
@@ -131,10 +153,9 @@
     </div>
     
     <div id="suiteRoom">
-        <div id="suiteimg"><img src="/resources/assets/img/rogo.png" alt="스위트" width="300px"></div>
+        <div id="suiteimg"><img src="/resources/assets/img/suite.jpg" alt="스위트" width="400px" height="300px"></div>
         <div id="suiteinfo">
-            <p id="suite">스위트</p>
-            <label for="suiteroom">잔여 객실 수:10</label>
+            <p id="suite">스위트</p>           
             <p>가격 300,000원</p>
             <p>회원가 <span id="charge1">270,000</span>원</p>
             <ul>
@@ -150,7 +171,7 @@
                     <span id="closeBtn1">&times;</span> <!-- 모달을 닫는 X 버튼 -->
                     <!-- 모달 창 내용 -->
                     <p>스위트룸 상세 보기</p>
-                    <div style="text-align: center;"><img src="/resources/assets/img/rogo.png" alt="스위트" width="300px"></div>
+                    <div style="text-align: center;"><img src="/resources/assets/img/suite.jpg" alt="스위트" width="500px"></div>
                     <p>룸 정보: 스위트룸</p>
                     <p>특별 혜택</p>
                     <ol>
@@ -204,12 +225,9 @@
         </div>
     </div>
     <div id="standardRoom">
-        <div><img src="/resources/assets/img/rogo.png" alt="스탠다드" width="300px"></div>
-        <div>
-             <p id="standard">스탠다드</p>
-            <form>
-                <label for="standardroom">잔여 객실 수:10</label>
-            </form>
+        <div><img src="/resources/assets/img/standard.jpg" alt="스탠다드" width="400px" height="300px"></div>
+        <div id="standardinfo">
+             <p id="standard">스탠다드</p>                     
             <p>가격 150,000원</p>
             <p>회원가 <span id="charge2">135,000</span>원</p>
             <ul>
@@ -224,7 +242,7 @@
                         <span id="closeBtn2">&times;</span> <!-- 모달을 닫는 X 버튼 -->
                         <!-- 모달 창 내용 -->
                         <p>스탠다드룸 상세 보기</p>
-                        <div style="text-align: center;"><img src="/resources/assets/img/rogo.png" alt="스위트" width="300px"></div>
+                        <div style="text-align: center;"><img src="/resources/assets/img/standard.jpg" alt="스탠다드" width="500px"></div>
                         <p>룸 정보: 스탠다드룸</p>
                         <p>특별 혜택 없음</p>
                         <p>기준 인원: 2인</p>

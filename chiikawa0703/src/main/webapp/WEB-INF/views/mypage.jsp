@@ -11,6 +11,26 @@
     <title>마이페이지</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<style>
+
+body {
+  background-image: url(/resources/assets/img/pool.jpg);
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  font-family: 'Roboto', sans-serif;
+}
+
+#container {
+	background-color:white;
+	text-align: center;
+	padding: 10px;
+}
+
+
+</style>
+
 </head>
 
 <body>
@@ -25,7 +45,7 @@
         </div>
         <a href="?language=ko">Korean</a> | <a href="?language=jp">Japanese</a>
         <!--회원정보 박스-->
-        <div class="container">
+        <div class="container" id="container">
                 <div class="mb-3 row">
                     <label class="col-sm-2"><fmt:message key="yourname"/></label>
                     <div class="col-sm-3">${user.mem_name }</div>
@@ -51,13 +71,23 @@
                     <div class="col-sm-3">${user.mem_phone}</div>                   
                 </div>
                 <!--전화번호-->
+                
+                
                 <div class="mb-3 row">
-                    <label class="col-sm-2 "><fmt:message key="youraddress"/></label>
-                    <div class="col-sm-3">${user.mem_post }</div>
-                    <div class="col-sm-3">${user.mem_addr }</div>
+                    <label class="col-sm-2 "><fmt:message key="addressplaceholder1"/></label>
+                    <div class="col-sm-3">${user.mem_post }</div>                                     
+                </div>
+                <div class="mb-3 row">
+                    <label class="col-sm-2 "><fmt:message key="addressplaceholder2"/></label>                   
+                    <div class="col-sm-3">${user.mem_addr }</div>                  
+                </div>
+                <div class="mb-3 row">
+                    <label class="col-sm-2 "><fmt:message key="addressplaceholder3"/></label>                                   
                     <div class="col-sm-3">${user.mem_detail_addr }</div>
                 </div>
                 <!--주소-->
+                
+                
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <div class="mb-3 row  me-md-2">
                     <div class="col-sm-offset-2 col-6">

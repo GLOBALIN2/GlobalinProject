@@ -59,8 +59,9 @@
 						<tbody>
 							<tr>
 								<td>
-									
-									<label for="content">댓글 내용</label><textarea style="white-space: pre-wrap; height:auto;" class="chk" class="form-control-plaintext" id="content" name="content" value="${replyUpdate.content}"/>  </textarea>
+									<div id="replycontent">
+									<label for="content">댓글 내용</label><textarea style="white-space: pre-wrap; height:250px;" class="chk" class="form-control-plaintext" id="content" name="content" value="${replyUpdate.content}"/>  </textarea>
+									</div>
 									
 								</td>
 							</tr>	

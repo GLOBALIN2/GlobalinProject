@@ -29,6 +29,8 @@
 		
 	</script>
 	<body>
+	<fmt:setLocale value = '<%=request.getParameter("language")%>'/>
+   <fmt:bundle basename="bundle.message"> 
 	<div id="wrapper">
 		<div id="root">
 			<header>
@@ -66,6 +68,7 @@
 			
 		</div>
 		</div>
-	<%@include file="../includes/footer.jsp"%>		
+	<%@include file="../includes/footer.jsp"%>	
+	</fmt:bundle>	
 	</body>
 </html>
