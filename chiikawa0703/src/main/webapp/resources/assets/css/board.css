@@ -46,7 +46,7 @@
 	.d1{
 		border-radius: 20px; 
 		width:50%; 
-		background-color:rgba(197,205,221,0.5);
+		background-color:rgba(197,205,221,0.8);
 		/* opacity : 0.5; */
 		margin: 0 auto;
 		color: #381E53;
@@ -55,28 +55,28 @@
 	.d2{
 		border-radius: 20px; 
 		width:50%; 
-		background-color:rgba(197,205,221,0.5);
+		background-color:rgba(197,205,221,0.8);
 		/* opacity : 0.5; */
 		margin: 0 auto;
 	}
 	#replydiv{
 		border-radius: 20px; 
 		width:50%; 
-		background-color:rgba(197,205,221,0.5);
+		background-color:rgba(197,205,221,0.8);
 		/* opacity : 0.5; */
 		margin: 0 auto;
 	}
 	#replybutton{
 		border-radius: 20px; 
 		width:50%; 
-		background-color:rgba(197,205,221,0.5);
+		background-color:rgba(197,205,221,0.8);
 		/* opacity : 0.5; */
 		margin: 0 auto;
 		
 	}
 	#contentreplyinput{
 		border-radius: 50px;
-		background-color:rgba(197,205,221,0.5);
+		background-color:rgba(197,205,221,0.8);
 		/* opacity : 0.5; */
 		height:20px;
 	}
@@ -86,7 +86,7 @@
 	 	height:190px;
 	 	/* background-color:rgba(197,205,221,0.5); */
 	 	/* opacity : 0.5; */
-  		background-color:rgba(197,205,221,0.5);
+  		background-color:rgba(197,205,221,0.8);
   		color: #000000;
   		
   		margin: 0 auto;
@@ -94,7 +94,7 @@
 	#contentreply{
 		width: 200px; 
 		height:500px;
-		background-color:rgba(197,205,221,0.5);
+		background-color:rgba(197,205,221,0.8);
   		
   		color: #000000;
   		margin: 0 auto;
@@ -102,8 +102,9 @@
 	}
 	#replycontent{
 		border-radius: 20px; 
-		width:50%; 
-		background-color:rgba(197,205,221,0.5);
+		width: 600px;
+		height: 300px; 
+		background-color:rgba(197,205,221,0.8);
 		/* opacity : 0.5; */
 		margin: 0 auto;
 		color: #381E53;
@@ -118,7 +119,7 @@
 	#title{
 		
 		color: #000000;
-		background-color:rgba(197,205,221,0.5);
+		background-color:rgba(197,205,221,0.8);
 		margin: 0 auto;
 	}
 	#readview{
@@ -127,13 +128,13 @@
 		margin: 0 auto;
 		border-radius: 20px; 
 		width:50%; 
-		background-color:rgba(197,205,221,0.5);
+		background-color:rgba(197,205,221,0.8);
 		/* opacity : 0.5; */
 		
 		color: #381E53;
 	}
 	#keywordInput{
-		background-color:rgba(197,205,221,0.5);
+		background-color:rgba(197,205,221,0.8);
 		border-width: 0;
 	}
 
@@ -148,7 +149,7 @@
 	
 /* 게시글 작성 화면 */
 	#contentbackground{
-		background-color:rgba(197,205,221,0.5);
+		background-color:rgba(197,205,221,0.8);
 	}	
 	
 /* 버튼 위치 */
@@ -174,16 +175,24 @@
 		font-family: Arial, Helvetica, sans-serif;
 		border-collapse: collapse;
   		width: 100%;
+  		opacity: 0.9;
 	}
 	
 	#boardlist td, #boardlist th{
 		border: 1px solid #ddd;
   		padding: 8px;
+  		
 	}
 	
-	#boardlist tr{background-color: #C9DFCB;}
+	#boardlist tr{
+		background-color: #C9DFCB;
+		
+	}
 	/* :nth-child(even) */
-	#boardlist tr:hover {background-color:#0ECE77;}
+	#boardlist tr:hover {
+		background-color:#0ECE77;
+		
+		}
 	
 	#boardlist th {
 		padding-top: 12px;
@@ -191,10 +200,12 @@
   		text-align: center;
   		background-color: #0ECE77;
   		color: white;
+  		
 	}
 	
 	td{
 		text-align:center;
+		
 	
 	}
 	

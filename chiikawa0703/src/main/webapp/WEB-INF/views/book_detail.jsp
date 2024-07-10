@@ -93,7 +93,7 @@ p, input {
 			   <p>예약자 이메일 : ${user.mem_email }</p>
             </div>
             <div class="col-4" id="bookinfo">
-<form action="/checkBook" method="post" id="bookingForm">
+<form method="post" id="bookingForm">
  				<input type="hidden" name="mem_id" value="${mem_id}">
 				<input type="hidden" name="checkin" value="${checkin}">
         		<input type="hidden" name="checkout" value="${checkout}">
@@ -110,7 +110,8 @@ p, input {
 				<input type="radio" id="bank" name="payment_op" value="무통장입금"></p> <br>
 				<p> <input type="checkbox" id="breakfast" name="breakfast" value="o">조식추가(1인+5만원) </p>
 				<p>최종금액 :<span id="chargeDisplay">${charge}</span>원</p>
-				<button type="submit" id="book">예약하기</button>
+			<!-- 	<button type="submit" id="book">예약하기</button>  -->
+				<input type="button" id="book" value="예약하기"/>
 </form>
             </div>
         </div>
@@ -118,6 +119,18 @@ p, input {
  </div>
  
  <script type="text/javascript">
+ 
+ 
+ 		document.getElementById('book').addEventListener('click', function(){
+		let charge = document.getElementById('chargeInput').value;
+		document.getElementById('chargeInput').value = charge.replace(',','');
+		let bookingForm = document.getElementById('bookingForm');
+		bookingForm.action = '<c:url value="/checkBook"/>';
+		bookingForm.submit();
+	});
+ 		
+ 		
+ 
 	// 조식 추가하면 가격 오르기
 	// 요소와 값을 분리해야 함 / 변수와 DOM 요소	
 		let chargeInputElement = document.getElementById("chargeInput");	// 폼에 있는 가격 요소

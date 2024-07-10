@@ -178,7 +178,8 @@ private static final Logger logger = LoggerFactory.getLogger(BoardController.cla
 //		        msg += "history.go(-3);"; // 이전 페이지로 돌아가기
 //		        msg += "</script>";
 //			
-		        	return "redirect:/board/updateView?bno=" + boardVO.getBno();
+//		        	return "redirect:/board/updateView?bno=" + boardVO.getBno();
+				return "redirect:/board/list";
 //			return msg;
 		}
 			

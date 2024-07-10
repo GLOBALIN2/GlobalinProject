@@ -63,7 +63,7 @@
               <li id="board"><a href="#"><fmt:message key="headerboard"/></a></li>
             </ul>
           </nav>
-          <br><br><br><br>
+          <br><br><br>
           <div>
 		<div>
 			<!-- <a href="/board/list">목록</a> -->

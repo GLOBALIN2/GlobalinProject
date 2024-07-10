@@ -58,6 +58,7 @@ table, #btn {
   	justify-content: space-evenly;
   	
   	
+  	
 }
 </style>
 </head>
@@ -100,7 +101,10 @@ table, #btn {
 	<div id="flexbox">
 		<c:choose>
 			<c:when test="${empty bookList }">
+				<div style="background-color: white;">
 				예약 정보가 없습니다.
+				</div>
+						  	
 		  	</c:when>
 		  	<c:otherwise>
 				<c:forEach items="${bookList}" var = "bookList">
