@@ -44,8 +44,8 @@
 			
 			
 			<div><br><br><br><br>
-			<h1 class="display-5 fw-bold">댓글 수정</h1>
-			</div><br><br>
+			<h1 class="display-5 fw-bold"></h1>
+			</div><br><br><br><br><br><br><br><br>
 		
 			<section id="container">
 				<form name="updateForm" role="form" method="post" action="/board/replyUpdate">

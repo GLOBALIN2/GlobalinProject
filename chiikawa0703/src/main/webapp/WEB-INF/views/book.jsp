@@ -95,7 +95,7 @@
 
         #modalBody {
             width: 500px;
-            height: 1300px;
+            height: 2000px;
             padding: 30px 30px;
             margin: 0 auto;
             border: 1px solid #777;
@@ -132,21 +132,22 @@
 </head>
 
 <body>
-    
+    <fmt:setLocale value = '<%=request.getParameter("language")%>'/>
+   <fmt:bundle basename="bundle.message"> 
     <div id="a">
-	    	<div id="b">지점
+	    	<div id="b"><fmt:message key="book.location"/>
 	    		<p> <select name="branch" id="branch">
-	                <option>서울지점</option>
-	                <option>부산지점</option>
+	                <option><fmt:message key="book.location.seoul"/></option>
+	                <option><fmt:message key="book.location.busan"/></option>
 	            </select> </p>
 	    	</div>
-	    	<div id="c">체크인 
+	    	<div id="c"><fmt:message key="book.checkin"/> 
 	    		<p><input type="text" id="from" name="from"></p>
 	    	</div>
-	    	<div id="d">체크아웃 
+	    	<div id="d"><fmt:message key="book.checkout"/>
 	    		<p><input type="text" id="to" name="to"></p>
 	    	</div>
-	    	<div id="e">인원 
+	    	<div id="e"><fmt:message key="book.membercount"/>
 	    		<p><input type="number" min="1" max="3" id="person" name="person"></p>
 	    	</div>
     	
@@ -155,138 +156,139 @@
     <div id="suiteRoom">
         <div id="suiteimg"><img src="/resources/assets/img/suite.jpg" alt="스위트" width="400px" height="300px"></div>
         <div id="suiteinfo">
-            <p id="suite">스위트</p>           
-            <p>가격 300,000원</p>
-            <p>회원가 <span id="charge1">270,000</span>원</p>
+            <p id="suite"><fmt:message key="book.suite"/></p>         
+            <p><fmt:message key="book.price"/> 300,000<fmt:message key="book.won"/></p>
+            <p><fmt:message key="book.memberprice"/> <span id="charge1">270,000</span><fmt:message key="book.won"/></p>
             <ul>
-                <li>무료WIFI</li>
-                <li>마운틴 뷰</li>
-                <li>피트니스 센터 이용 가능</li>
+                <li><fmt:message key="book.freewifi"/></li>
+                <li><fmt:message key="book.mountainview"/></li>
+                <li><fmt:message key="book.canusefitness"/></li>
             </ul>
         </div>
         <div id="btnWrap">
-            <input type="button" id="popupBtn1" value="상세보기"> <br><br>
+            <input type="button" id="popupBtn1" value="<fmt:message key="book.goto.detail.button"/>"> <br><br>
             <div id="modalWrap1"> <!-- 모달 창을 감싸는 div -->
                 <div id="modalBody">
                     <span id="closeBtn1">&times;</span> <!-- 모달을 닫는 X 버튼 -->
                     <!-- 모달 창 내용 -->
-                    <p>스위트룸 상세 보기</p>
+                    <p><fmt:message key="book.suite.detail"/></p>
                     <div style="text-align: center;"><img src="/resources/assets/img/suite.jpg" alt="스위트" width="500px"></div>
-                    <p>룸 정보: 스위트룸</p>
-                    <p>특별 혜택</p>
+                    <p><fmt:message key="book.suite.roominfo"/></p>
+                    <p><fmt:message key="book.suite.service"/></p>
                     <ol>
-                        <li>피트니스 센터 무료 이용 가능</li>
-                        <li>라운지 이용 가능</li>
-                        <li>고속 WIFI 제공</li>
-                        <li>다과 제공</li>
-                        <li>전 객실 마운틴뷰 제공</li>
+                        <li><fmt:message key="book.suite.fitness"/></li>
+                        <li><fmt:message key="book.suite.rounge"/></li>
+                        <li><fmt:message key="book.suite.fastwifi"/></li>
+                        <li><fmt:message key="book.suite.snack"/></li>
+                        <li><fmt:message key="book.suite.mountainview"/></li>
                     </ol>
-                    <p>기준 인원: 2인</p>
-                    <p>최대 수용 가능 인원: 3인</p>
-                    <p>침구</p>
+                    <p><fmt:message key="book.suite.basemember"/></p>
+                    <p><fmt:message key="book.suite.highmember"/></p>
+                    <p><fmt:message key="book.bedandpillow"/></p>
                     <ol>
-                        <li>킹사이즈 침대 1개</li>
-                        <li>퀸사이즈 침대 1개</li>
+                        <li><fmt:message key="book.kingsize"/></li>
+                        <li><fmt:message key="book.queensize"/></li>
                     </ol>
-                    <p>객실 특징</p>
+                    <p><fmt:message key="book.goto.detail.button"/></p>
                     <ol>
-                        <li>70제곱미터 넓이</li>
-                        <li>에어컨 있음</li>
-                        <li>공기청정기 있음</li>
-                        <li>금연 객실임</li>
-                        <li>옷장 제공</li>
+                        <li><fmt:message key="book.roomspace"/></li>
+                        <li><fmt:message key="book.aircon"/></li>
+                        <li><fmt:message key="book.airrefresher"/></li>
+                        <li><fmt:message key="book.dontsmoke"/></li>
+                        <li><fmt:message key="book.closet"/></li>
                     </ol>
-                    <p>욕실</p>
+                    <p><fmt:message key="book.shower"/></p>
                     <ol>
-                        <li>대리석</li>
-                        <li>욕조 있음</li>
-                        <li>헤어 드라이어 제공</li>
-                        <li>가운: 2벌 제공</li>
-                        <li>욕실 슬리퍼 있음</li>
+                        <li><fmt:message key="book.rock"/></li>
+                        <li><fmt:message key="book.ofuro"/></li>
+                        <li><fmt:message key="book.hairdrier"/></li>
+                        <li><fmt:message key="book.cloth"/></li>
+                        <li><fmt:message key="book.sleeper"/></li>
                     </ol>
-                    <p>가구</p>
+                    <p><fmt:message key="book.furniture"/></p>
                     <ol>
-                        <li>소파</li>
-                        <li>의자</li>
-                        <li>책상</li>
-                        <li>알람 시계</li>
-                        <li>텔레비전</li>
+                        <li><fmt:message key="book.sofa"/></li>
+                        <li><fmt:message key="book.chair"/></li>
+                        <li><fmt:message key="book.table"/></li>
+                        <li><fmt:message key="book.alarm"/></li>
+                        <li><fmt:message key="book.tv"/></li>
                     </ol>
-                    <p>음식, 음료: 특별 다과 제공</p>
-                    <p>주방</p>
+                    <p><fmt:message key="book.snackservice"/></p>
+                    <p><fmt:message key="book.kitchen"/></p>
                     <ol>
-                        <li>미니 냉장고</li>
-                        <li>접시와 컵, 와인잔</li>
+                        <li><fmt:message key="book.refrege"/></li>
+                        <li><fmt:message key="book.dishcup"/></li>
                     </ol>
                 </div>
             </div>
             <div id="alert1"></div>
-            <button id="suiteBtn">예약하기</button>
+            <button id="suiteBtn"><fmt:message key="book.goto.book.button"/></button>
         </div>
     </div>
     <div id="standardRoom">
         <div><img src="/resources/assets/img/standard.jpg" alt="스탠다드" width="400px" height="300px"></div>
         <div id="standardinfo">
-             <p id="standard">스탠다드</p>                     
-            <p>가격 150,000원</p>
-            <p>회원가 <span id="charge2">135,000</span>원</p>
+             <p id="standard"><fmt:message key="book.standard"/></p>                     
+            <p><fmt:message key="book.price"/> 150,000<fmt:message key="book.won"/></p>
+            <p><fmt:message key="book.memberprice"/> <span id="charge2">135,000</span><fmt:message key="book.won"/></p>
             <ul>
-                <li>무료WIFI</li>
+                <li><fmt:message key="book.freewifi"/></li>
             </ul>
         </div>
         <div>
             <div id="btnWrap">
-                <input type="button" id="popupBtn2" value="상세보기"> <br><br>
+                <input type="button" id="popupBtn2" value="<fmt:message key="book.goto.detail.button"/>"> <br><br>
                 <div id="modalWrap2"> <!-- 모달 창을 감싸는 div -->
                     <div id="modalBody">
                         <span id="closeBtn2">&times;</span> <!-- 모달을 닫는 X 버튼 -->
                         <!-- 모달 창 내용 -->
-                        <p>스탠다드룸 상세 보기</p>
+                        <p><fmt:message key="book.standarddetail"/></p>
                         <div style="text-align: center;"><img src="/resources/assets/img/standard.jpg" alt="스탠다드" width="500px"></div>
-                        <p>룸 정보: 스탠다드룸</p>
-                        <p>특별 혜택 없음</p>
-                        <p>기준 인원: 2인</p>
-                        <p>최대 수용 가능 인원: 2인</p>
-                        <p>침구</p>
+                        <p><fmt:message key="book.standard"/></p>
+                        <p><fmt:message key="book.nobonus"/></p>
+                        <p><fmt:message key="book.suite.basemember"/></p>
+                        <p><fmt:message key="book.suite.highmember"/></p>
+                        <p><fmt:message key="book.bedandpillow"/></p>
                         <ol>
-                            <li>킹사이즈 침대 2개</li>
+                            <li><fmt:message key="book.kingsize"/></li>
                         </ol>
-                        <p>객실 특징</p>
+                        <p><fmt:message key="book.roomdetail"/></p>
                         <ol>
-                            <li>40제곱미터 넓이</li>
-                            <li>에어컨 있음</li>
-                            <li>공기청정기 있음</li>
-                            <li>금연 객실임</li>
-                            <li>옷장 제공</li>
+                            <li><fmt:message key="book.roomspace2"/></li>
+                            <li><fmt:message key="book.aircon"/></li>
+                            <li><fmt:message key="book.airrefresher"/></li>
+                            <li><fmt:message key="book.dontsmoke"/></li>
+                            <li><fmt:message key="book.closet"/></li>
                         </ol>
-                        <p>욕실</p>
+                        <p><fmt:message key="book.shower"/></p>
                         <ol>
-                            <li>욕조 있음</li>
-                            <li>헤어 드라이어 제공</li>
-                            <li>가운: 2벌 제공</li>
-                            <li>욕실 슬리퍼 있음</li>
+                            <li><fmt:message key="book.ofuro"/></li>
+                            <li><fmt:message key="book.hairdrier"/></li>
+                            <li><fmt:message key="book.cloth"/></li>
+                            <li><fmt:message key="book.sleeper"/></li>
                         </ol>
-                        <p>가구</p>
+                        <p><fmt:message key="book.furniture"/></p>
                         <ol>
-                            <li>소파</li>
-                            <li>의자</li>
-                            <li>책상</li>
-                            <li>알람 시계</li>
-                            <li>텔레비전</li>
+                            <li><fmt:message key="book.sofa"/></li>
+                            <li><fmt:message key="book.chair"/></li>
+                            <li><fmt:message key="book.table"/></li>
+                            <li><fmt:message key="book.alarm"/></li>
+                            <li><fmt:message key="book.tv"/></li>
                         </ol>
-                        <p>주방</p>
+                        <p><fmt:message key="book.kitchen"/></p>
                         <ol>
-                            <li>미니 냉장고</li>
-                            <li>접시와 컵, 와인잔</li>
+                            <li><fmt:message key="book.refrege"/></li>
+                            <li><fmt:message key="book.dishcup"/></li>
                         </ol>
-                        <p>인터넷: 와이파이 제공</p>
+                        <p><fmt:message key="book.wifi"/></p>
                     </div>
                 </div>
                 <div id="alert2"></div>
-                <button id = "standardBtn">예약하기</button> 
+                <button id = "standardBtn"><fmt:message key="book.goto.book.button"/></button> 
             </div>
         </div>
       </div>
+       <a href="?language=ko">Korean</a> | <a href="?language=jp">Japanese</a>  
         <script>   //달력
             var rangeDate = 31; // set limit day
             var setSdate, setEdate;
@@ -466,6 +468,7 @@
                 });
                 */     
         </script>
+        </fmt:bundle>
 </body>
 
 </html>>

@@ -51,7 +51,7 @@
             <address>
               <p>
                 서울특별시 영등포구 영중로 56, 신한빌딩<br /><span class="bar2">대표자명 치이카와</span>
-                개인정보보호 책임자 경영지원실 실장 하치와레https://jddng.tistory.com/268<br /><span class="bar2">사업자등록번호 111-222-333</span>
+                개인정보보호 책임자 경영지원실 실장 하치와레<br /><span class="bar2">사업자등록번호 111-222-333</span>
                 통신판매업신고번호 제 111호
               </p>
               <p>Copyright 2024 by chiikawahotel. All right reserved</p>

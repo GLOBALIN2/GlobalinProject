@@ -51,8 +51,8 @@
 			
 			
 			<div><br><br>
-			<h1 class="display-5 fw-bold"><fmt:message key="writepagemain"/></h1>
-			</div><br><br>
+			<h1 class="display-5 fw-bold"><!--<fmt:message key="writepagemain"/>--></h1>
+			</div><br><br><br><br><br><br><br><br><br>
 			
 			<section id="container">
 					<form role="writeform" method="post" action="/board/write">

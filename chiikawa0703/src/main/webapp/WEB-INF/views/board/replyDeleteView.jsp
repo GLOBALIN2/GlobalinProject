@@ -44,8 +44,8 @@
 			
 			
 			<div><br><br>
-			<h1 class="display-5 fw-bold">댓글 삭제</h1>
-			</div><br><br>
+			<h1 class="display-5 fw-bold"></h1>
+			</div><br><br><br><br><br><br><br><br>
 			
 			<section id="container">
 				<form name="updateForm" role="form" method="post" action="/board/replyDelete">
@@ -58,7 +58,9 @@
 					
 					<div id="replydeletelocation">	
 					<div id="buttonlocation">
-						<p class="fs-4">댓글을 삭제하시겠습니까?</p>
+						
+						<span style="color: white; background-color: #B2AADA;"><p class="fs-4">댓글을 삭제하시겠습니까?</p></span>
+						
 						<button type="submit" style="background-color: #B2AADA;" class="btn btn-outline-light btn-sm delete_btn">예 삭제합니다.</button>
 						<button type="button" style="background-color: #B2AADA;" class="btn btn-outline-light btn-sm cancel_btn">아니오. 삭제하지 않습니다.</button>
 					</div>
